@@ -1,0 +1,12 @@
+body {
+    min-height: 75rem;
+  }
+
+#post {
+    border-color: black;
+    border-style: solid;
+    background-color: aquamarine;
+    padding: 10px;
+    margin-bottom: 20px
+}
+

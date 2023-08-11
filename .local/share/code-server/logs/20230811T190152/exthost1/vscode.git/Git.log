@@ -1,0 +1,61 @@
+2023-08-11 19:02:03.839 [info] Log level: Info
+2023-08-11 19:02:03.839 [info] Validating found git in: "git"
+2023-08-11 19:02:03.839 [info] Using git "2.30.2" from "git"
+2023-08-11 19:02:03.839 [info] > git rev-parse --show-toplevel [50ms]
+2023-08-11 19:02:03.839 [info] fatal: not a git repository (or any parent up to mount point /var)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2023-08-11 19:02:03.839 [info] > git rev-parse --show-toplevel [2ms]
+2023-08-11 19:02:03.839 [info] fatal: not a git repository (or any parent up to mount point /var)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2023-08-11 19:02:03.839 [info] > git rev-parse --show-toplevel [2ms]
+2023-08-11 19:02:03.839 [info] fatal: not a git repository (or any parent up to mount point /var)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2023-08-11 19:02:03.839 [info] > git rev-parse --show-toplevel [2ms]
+2023-08-11 19:02:03.839 [info] fatal: not a git repository (or any parent up to mount point /var)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2023-08-11 19:02:03.839 [info] > git rev-parse --show-toplevel [2ms]
+2023-08-11 19:02:03.839 [info] fatal: not a git repository (or any parent up to mount point /var)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2023-08-11 19:02:03.839 [info] > git rev-parse --show-toplevel [1ms]
+2023-08-11 19:02:03.839 [info] fatal: not a git repository (or any parent up to mount point /var)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2023-08-11 19:02:03.839 [info] > git rev-parse --show-toplevel [1ms]
+2023-08-11 19:02:03.839 [info] fatal: not a git repository (or any parent up to mount point /var)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2023-08-11 19:02:04.016 [info] > git rev-parse --show-toplevel [1ms]
+2023-08-11 19:02:04.016 [info] fatal: not a git repository (or any parent up to mount point /var)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+2023-08-11 19:13:30.197 [info] > git init [45ms]
+2023-08-11 19:13:30.197 [info] hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+2023-08-11 19:13:30.890 [info] > git rev-parse --show-toplevel [3ms]
+2023-08-11 19:13:30.898 [info] > git rev-parse --git-dir --git-common-dir [2ms]
+2023-08-11 19:13:30.911 [info] Open repository: /var/www
+2023-08-11 19:13:30.926 [info] No remotes found in the git config file.
+2023-08-11 19:13:30.927 [info] > git config --get commit.template [7ms]
+2023-08-11 19:13:30.927 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [2ms]
+2023-08-11 19:13:31.327 [info] > git show --textconv :html/webAppDev/week3/task4assoc/index.html [6ms]
+2023-08-11 19:13:31.329 [info] > git ls-files --stage -- /var/www/html/webAppDev/week3/task4assoc/index.html [2ms]
+2023-08-11 19:13:31.475 [info] > git status -z -uall [542ms]
+2023-08-11 19:13:31.510 [info] No remotes found in the git config file.
+2023-08-11 19:13:31.511 [info] > git config --get commit.template [7ms]
+2023-08-11 19:13:31.512 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [2ms]
+2023-08-11 19:13:31.544 [info] > git status -z -uall [26ms]
+2023-08-11 19:13:31.568 [info] > git check-ignore -v -z --stdin [3ms]
+2023-08-11 19:13:32.705 [info] > git check-ignore -v -z --stdin [3ms]
+2023-08-11 19:13:34.706 [info] No remotes found in the git config file.
+2023-08-11 19:13:34.713 [info] > git config --get commit.template [7ms]
+2023-08-11 19:13:34.714 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [3ms]
+2023-08-11 19:13:34.746 [info] > git status -z -uall [27ms]
+2023-08-11 19:13:39.773 [info] No remotes found in the git config file.
+2023-08-11 19:13:39.774 [info] > git config --get commit.template [6ms]
+2023-08-11 19:13:39.775 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [2ms]
+2023-08-11 19:13:39.808 [info] > git status -z -uall [28ms]

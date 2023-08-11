@@ -1,0 +1,5 @@
+AuthName "Password Protected Directory"
+AuthUserFile /var/www/html/webAppDev/.htpasswd
+AuthType Basic
+require valid-user
+

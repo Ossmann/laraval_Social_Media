@@ -1,0 +1,10 @@
+#navbar {
+    border-style: solid;
+    border-color: black
+}
+
+#content {
+    border-color: black;
+    border-style: solid;
+    padding: 10px
+}

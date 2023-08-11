@@ -1,0 +1,9 @@
+body {
+    min-height: 75rem;
+  }
+
+#post {
+    border-color: black;
+    border-style: solid;
+    background-color: aquamarine;
+}

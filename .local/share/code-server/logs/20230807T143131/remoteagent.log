@@ -1,0 +1,18 @@
+2023-08-07 14:31:31.217 [info] 
+
+
+
+
+2023-08-07 14:31:31.245 [info] Extension host agent started.
+2023-08-07 14:31:38.032 [info] [<unknown>][a33d5214][ManagementConnection] New connection established.
+2023-08-07 14:31:38.547 [warning] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+2023-08-07 14:31:38.881 [info] [<unknown>][1c578859][ExtensionHostConnection] New connection established.
+2023-08-07 14:31:38.891 [info] [<unknown>][1c578859][ExtensionHostConnection] <626> Launched Extension Host Process.
+2023-08-07 15:24:41.732 [info] [<unknown>][a33d5214][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+2023-08-07 15:24:41.992 [info] [<unknown>][a33d5214][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+2023-08-07 15:24:41.993 [info] [<unknown>][1c578859][ExtensionHostConnection] The client has reconnected.
+2023-08-07 15:24:42.210 [info] [<unknown>][a33d5214][ManagementConnection] The client has reconnected.
+2023-08-07 15:40:51.044 [info] [<unknown>][a33d5214][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+2023-08-07 17:27:10.191 [info] [<unknown>][a33d5214][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+2023-08-07 17:27:10.192 [info] [<unknown>][a33d5214][ManagementConnection] The client has reconnected.
+2023-08-07 17:27:10.521 [info] [<unknown>][1c578859][ExtensionHostConnection] The client has reconnected.

@@ -1,0 +1,17 @@
+
+#first {
+    width: 300px;
+    float: left;
+    background: #ddf;
+}
+
+#navbar {
+    border-color: black;
+    border-style: solid
+}
+
+
+#content {
+    border-color: black;
+    border-style: solid
+}
