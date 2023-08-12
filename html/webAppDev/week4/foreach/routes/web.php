@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $get = request()->all();
-    dd($get);
-    return view('welcome');
+    return view('foreach')->with('get', request()->all());
 });
+ 
