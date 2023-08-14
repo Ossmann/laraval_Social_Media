@@ -118,3 +118,65 @@ File not found: /usr/local/code-server-4.13.0-linux-amd64/lib/vscode/node_module
 [13:04:16] RequestStore#acceptReply was called without receiving a matching request 24
 File not found: /usr/local/code-server-4.13.0-linux-amd64/lib/vscode/node_modules/vscode-regexp-languagedetection/dist/index.js
 [19:02:01] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+File not found: /usr/local/code-server-4.13.0-linux-amd64/lib/vscode/node_modules/vscode-regexp-languagedetection/dist/index.js
+[11:57:47] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+[15:36:41] RequestStore#acceptReply was called without receiving a matching request 67
+[15:36:41] RequestStore#acceptReply was called without receiving a matching request 68
+[15:36:41] RequestStore#acceptReply was called without receiving a matching request 69
+[15:36:41] RequestStore#acceptReply was called without receiving a matching request 70
+[15:36:41] RequestStore#acceptReply was called without receiving a matching request 71
+[15:36:41] RequestStore#acceptReply was called without receiving a matching request 72
+[15:36:41] RequestStore#acceptReply was called without receiving a matching request 73
+[15:36:41] RequestStore#acceptReply was called without receiving a matching request 74
+[15:36:41] RequestStore#acceptReply was called without receiving a matching request 75
+[15:36:41] RequestStore#acceptReply was called without receiving a matching request 76
+[15:36:41] RequestStore#acceptReply was called without receiving a matching request 77
+[15:36:42] RequestStore#acceptReply was called without receiving a matching request 78
+[15:36:44] RequestStore#acceptReply was called without receiving a matching request 79
+[15:36:44] RequestStore#acceptReply was called without receiving a matching request 80
+[15:36:44] RequestStore#acceptReply was called without receiving a matching request 81
+[15:36:44] RequestStore#acceptReply was called without receiving a matching request 82
+[15:36:44] RequestStore#acceptReply was called without receiving a matching request 83
+[15:36:44] RequestStore#acceptReply was called without receiving a matching request 84
+[15:59:33] RequestStore#acceptReply was called without receiving a matching request 85
+[15:59:34] RequestStore#acceptReply was called without receiving a matching request 85
+[15:59:34] RequestStore#acceptReply was called without receiving a matching request 86
+[15:59:34] RequestStore#acceptReply was called without receiving a matching request 87
+[15:59:34] RequestStore#acceptReply was called without receiving a matching request 88
+[15:59:34] RequestStore#acceptReply was called without receiving a matching request 89
+[15:59:34] RequestStore#acceptReply was called without receiving a matching request 90
+[15:59:34] RequestStore#acceptReply was called without receiving a matching request 91
+[15:59:34] RequestStore#acceptReply was called without receiving a matching request 92
+[15:59:34] RequestStore#acceptReply was called without receiving a matching request 93
+[15:59:34] RequestStore#acceptReply was called without receiving a matching request 94
+[15:59:34] RequestStore#acceptReply was called without receiving a matching request 95
+[15:59:34] RequestStore#acceptReply was called without receiving a matching request 96
+[15:59:35] RequestStore#acceptReply was called without receiving a matching request 86
+[15:59:35] RequestStore#acceptReply was called without receiving a matching request 87
+[15:59:35] RequestStore#acceptReply was called without receiving a matching request 88
+[15:59:35] RequestStore#acceptReply was called without receiving a matching request 89
+[15:59:35] RequestStore#acceptReply was called without receiving a matching request 90
+[15:59:35] RequestStore#acceptReply was called without receiving a matching request 91
+[15:59:35] RequestStore#acceptReply was called without receiving a matching request 92
+[15:59:35] RequestStore#acceptReply was called without receiving a matching request 93
+[15:59:35] RequestStore#acceptReply was called without receiving a matching request 94
+[15:59:35] RequestStore#acceptReply was called without receiving a matching request 95
+[15:59:35] RequestStore#acceptReply was called without receiving a matching request 96
+[15:59:36] RequestStore#acceptReply was called without receiving a matching request 97
+[15:59:36] RequestStore#acceptReply was called without receiving a matching request 98
+[15:59:36] RequestStore#acceptReply was called without receiving a matching request 99
+[15:59:36] RequestStore#acceptReply was called without receiving a matching request 100
+[15:59:36] RequestStore#acceptReply was called without receiving a matching request 101
+[15:59:36] RequestStore#acceptReply was called without receiving a matching request 97
+[15:59:36] RequestStore#acceptReply was called without receiving a matching request 102
+[15:59:36] RequestStore#acceptReply was called without receiving a matching request 98
+[15:59:36] RequestStore#acceptReply was called without receiving a matching request 99
+[15:59:36] RequestStore#acceptReply was called without receiving a matching request 100
+[15:59:36] RequestStore#acceptReply was called without receiving a matching request 101
+[15:59:36] RequestStore#acceptReply was called without receiving a matching request 102
+[21:39:43] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+File not found: /usr/local/code-server-4.13.0-linux-amd64/lib/vscode/node_modules/vscode-regexp-languagedetection/dist/index.js
+[00:24:15] No ptyHost heartbeat after 6 seconds
+[10:52:49] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+[15:33:57] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+[17:41:33] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory

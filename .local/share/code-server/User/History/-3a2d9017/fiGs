@@ -1,0 +1,21 @@
+What are the names of customers who live in Nathan?
+
+Select Name 
+FROM Customers, Orders
+WHERE Customers.Id = Orders.CustId
+
+
+
+
+CREATE TABLE IF NOT EXISTS Customers (
+	Id INTEGER PRIMARY KEY,
+	Name VARCHAR(20) default '' NOT NULL,
+	Address VARCHAR(80),
+	Email VARCHAR(30));
+
+CREATE TABLE IF NOT EXISTS Orders (
+	Id INTEGER PRIMARY KEY,
+	ItemId INTEGER NOT NULL REFERENCES Stock(Id),
+	CustId INTEGER NOT NULL REFERENCES Customers(Id),
+	OrderDate DATE,
+	Quantity INT DEFAULT '0');

@@ -1,0 +1,13 @@
+What are the names of customers who live in Nathan?
+
+Select Name 
+FROM Customers
+WHERE Address like '%Woodridge%';
+
+
+
+CREATE TABLE IF NOT EXISTS Customers (
+	Id INTEGER PRIMARY KEY,
+	Name VARCHAR(20) default '' NOT NULL,
+	Address VARCHAR(80),
+	Email VARCHAR(30));

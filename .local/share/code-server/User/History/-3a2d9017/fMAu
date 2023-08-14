@@ -1,0 +1,6 @@
+What are the names of customers who live in Nathan?
+
+Select Stock.name
+FROM Stock, Customers, Orders
+WHERE Customers.Id = Orders.CustId and Stock.Id = Orders.ItemId and
+Customers.name = 'Sally';

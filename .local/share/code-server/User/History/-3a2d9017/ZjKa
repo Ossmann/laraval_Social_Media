@@ -1,0 +1,5 @@
+Which stock has Sally ordered.
+
+Select Stock.name
+FROM Stock, Customers, Orders
+WHERE 
