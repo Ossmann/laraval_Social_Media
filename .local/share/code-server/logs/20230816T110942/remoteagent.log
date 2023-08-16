@@ -1,0 +1,62 @@
+2023-08-16 11:09:42.464 [info] 
+
+
+
+
+2023-08-16 11:09:42.508 [info] Extension host agent started.
+2023-08-16 11:09:50.239 [info] [<unknown>][737a2795][ManagementConnection] New connection established.
+2023-08-16 11:09:50.725 [warning] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+2023-08-16 11:09:51.026 [info] [<unknown>][096511f9][ExtensionHostConnection] New connection established.
+2023-08-16 11:09:51.032 [info] [<unknown>][096511f9][ExtensionHostConnection] <626> Launched Extension Host Process.
+2023-08-16 13:51:10.406 [info] [<unknown>][737a2795][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+2023-08-16 13:51:10.640 [info] [<unknown>][737a2795][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+2023-08-16 13:51:10.641 [info] [<unknown>][096511f9][ExtensionHostConnection] The client has reconnected.
+2023-08-16 13:51:10.854 [info] [<unknown>][737a2795][ManagementConnection] The client has reconnected.
+2023-08-16 13:55:21.200 [info] [<unknown>][737a2795][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+2023-08-16 14:41:09.628 [info] [<unknown>][737a2795][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+2023-08-16 14:41:09.629 [info] [<unknown>][9cc75b2f][ManagementConnection] New connection established.
+2023-08-16 14:41:10.381 [info] [<unknown>][b29ca5a7][ExtensionHostConnection] New connection established.
+2023-08-16 14:41:10.389 [info] [<unknown>][b29ca5a7][ExtensionHostConnection] <54122> Launched Extension Host Process.
+2023-08-16 14:46:09.704 [info] [<unknown>][737a2795][ManagementConnection] The reconnection short grace time of 5m has expired, so the connection will be disposed.
+2023-08-16 14:46:09.839 [info] [<unknown>][096511f9][ExtensionHostConnection] <626> Extension Host Process exited with code: 0, signal: null.
+2023-08-16 14:49:15.885 [info] [<unknown>][bee39232][ManagementConnection] New connection established.
+2023-08-16 14:49:16.593 [info] [<unknown>][8883b45d][ExtensionHostConnection] New connection established.
+2023-08-16 14:49:16.602 [info] [<unknown>][8883b45d][ExtensionHostConnection] <57931> Launched Extension Host Process.
+2023-08-16 14:49:17.313 [warning] RequestStore#acceptReply was called without receiving a matching request 49
+2023-08-16 14:49:17.355 [warning] RequestStore#acceptReply was called without receiving a matching request 50
+2023-08-16 14:49:17.435 [warning] RequestStore#acceptReply was called without receiving a matching request 51
+2023-08-16 14:49:17.476 [warning] RequestStore#acceptReply was called without receiving a matching request 52
+2023-08-16 14:49:17.517 [warning] RequestStore#acceptReply was called without receiving a matching request 53
+2023-08-16 14:49:17.591 [warning] RequestStore#acceptReply was called without receiving a matching request 54
+2023-08-16 14:49:18.398 [warning] RequestStore#acceptReply was called without receiving a matching request 55
+2023-08-16 14:49:18.443 [warning] RequestStore#acceptReply was called without receiving a matching request 56
+2023-08-16 14:49:18.521 [warning] RequestStore#acceptReply was called without receiving a matching request 57
+2023-08-16 14:49:18.565 [warning] RequestStore#acceptReply was called without receiving a matching request 58
+2023-08-16 14:49:18.645 [warning] RequestStore#acceptReply was called without receiving a matching request 59
+2023-08-16 14:49:18.686 [warning] RequestStore#acceptReply was called without receiving a matching request 60
+2023-08-16 16:37:50.020 [info] [<unknown>][9cc75b2f][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2023-08-16 16:37:50.067 [info] [<unknown>][b29ca5a7][ExtensionHostConnection] <54122> Extension Host Process exited with code: 0, signal: null.
+2023-08-16 16:37:50.871 [info] [<unknown>][3f72e30f][ManagementConnection] New connection established.
+2023-08-16 16:37:51.545 [info] [<unknown>][47494ad5][ExtensionHostConnection] New connection established.
+2023-08-16 16:37:51.557 [info] [<unknown>][47494ad5][ExtensionHostConnection] <100939> Launched Extension Host Process.
+2023-08-16 16:37:52.531 [warning] RequestStore#acceptReply was called without receiving a matching request 61
+2023-08-16 16:37:52.645 [warning] RequestStore#acceptReply was called without receiving a matching request 62
+2023-08-16 16:37:52.666 [warning] RequestStore#acceptReply was called without receiving a matching request 63
+2023-08-16 16:37:52.979 [warning] RequestStore#acceptReply was called without receiving a matching request 64
+2023-08-16 16:37:52.980 [warning] RequestStore#acceptReply was called without receiving a matching request 65
+2023-08-16 16:37:52.980 [warning] RequestStore#acceptReply was called without receiving a matching request 66
+2023-08-16 16:37:54.471 [warning] RequestStore#acceptReply was called without receiving a matching request 67
+2023-08-16 16:37:54.513 [warning] RequestStore#acceptReply was called without receiving a matching request 68
+2023-08-16 16:37:54.555 [warning] RequestStore#acceptReply was called without receiving a matching request 69
+2023-08-16 16:37:54.598 [warning] RequestStore#acceptReply was called without receiving a matching request 70
+2023-08-16 16:37:54.646 [warning] RequestStore#acceptReply was called without receiving a matching request 71
+2023-08-16 16:37:54.690 [warning] RequestStore#acceptReply was called without receiving a matching request 72
+2023-08-16 16:44:48.089 [info] [<unknown>][bee39232][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2023-08-16 16:44:48.147 [info] [<unknown>][8883b45d][ExtensionHostConnection] <57931> Extension Host Process exited with code: 0, signal: null.
+2023-08-16 16:44:56.029 [info] [<unknown>][3f72e30f][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2023-08-16 16:44:56.074 [info] [<unknown>][47494ad5][ExtensionHostConnection] <100939> Extension Host Process exited with code: 0, signal: null.
+2023-08-16 16:45:04.041 [info] [<unknown>][53fcde92][ManagementConnection] New connection established.
+2023-08-16 16:45:04.802 [info] [<unknown>][146740e6][ExtensionHostConnection] New connection established.
+2023-08-16 16:45:04.812 [info] [<unknown>][146740e6][ExtensionHostConnection] <103846> Launched Extension Host Process.
+2023-08-16 17:09:36.010 [info] [<unknown>][53fcde92][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2023-08-16 17:09:36.048 [info] [<unknown>][146740e6][ExtensionHostConnection] <103846> Extension Host Process exited with code: 0, signal: null.

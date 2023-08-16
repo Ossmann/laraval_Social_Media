@@ -181,3 +181,41 @@ File not found: /usr/local/code-server-4.13.0-linux-amd64/lib/vscode/node_module
 [15:33:57] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
 [17:41:33] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
 [17:59:16] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+[11:09:50] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+[14:49:17] RequestStore#acceptReply was called without receiving a matching request 49
+[14:49:17] RequestStore#acceptReply was called without receiving a matching request 50
+[14:49:17] RequestStore#acceptReply was called without receiving a matching request 51
+[14:49:17] RequestStore#acceptReply was called without receiving a matching request 52
+[14:49:17] RequestStore#acceptReply was called without receiving a matching request 53
+[14:49:17] RequestStore#acceptReply was called without receiving a matching request 54
+[14:49:18] RequestStore#acceptReply was called without receiving a matching request 55
+[14:49:18] RequestStore#acceptReply was called without receiving a matching request 56
+[14:49:18] RequestStore#acceptReply was called without receiving a matching request 57
+[14:49:18] RequestStore#acceptReply was called without receiving a matching request 58
+[14:49:18] RequestStore#acceptReply was called without receiving a matching request 59
+[14:49:18] RequestStore#acceptReply was called without receiving a matching request 60
+[16:37:52] RequestStore#acceptReply was called without receiving a matching request 61
+[16:37:52] RequestStore#acceptReply was called without receiving a matching request 62
+[16:37:52] RequestStore#acceptReply was called without receiving a matching request 63
+[16:37:52] RequestStore#acceptReply was called without receiving a matching request 64
+[16:37:52] RequestStore#acceptReply was called without receiving a matching request 65
+[16:37:52] RequestStore#acceptReply was called without receiving a matching request 66
+[16:37:54] RequestStore#acceptReply was called without receiving a matching request 67
+[16:37:54] RequestStore#acceptReply was called without receiving a matching request 68
+[16:37:54] RequestStore#acceptReply was called without receiving a matching request 69
+[16:37:54] RequestStore#acceptReply was called without receiving a matching request 70
+[16:37:54] RequestStore#acceptReply was called without receiving a matching request 71
+[16:37:54] RequestStore#acceptReply was called without receiving a matching request 72
+[17:09:43] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+[17:46:39] RequestStore#acceptReply was called without receiving a matching request 19
+[17:46:39] RequestStore#acceptReply was called without receiving a matching request 20
+[17:46:39] RequestStore#acceptReply was called without receiving a matching request 21
+[17:46:39] RequestStore#acceptReply was called without receiving a matching request 22
+[17:46:39] RequestStore#acceptReply was called without receiving a matching request 23
+[17:46:39] RequestStore#acceptReply was called without receiving a matching request 24
+[17:46:40] RequestStore#acceptReply was called without receiving a matching request 25
+[17:46:40] RequestStore#acceptReply was called without receiving a matching request 26
+[17:46:40] RequestStore#acceptReply was called without receiving a matching request 27
+[17:46:40] RequestStore#acceptReply was called without receiving a matching request 28
+[17:46:40] RequestStore#acceptReply was called without receiving a matching request 29
+[17:46:40] RequestStore#acceptReply was called without receiving a matching request 30

@@ -8,3 +8,5 @@
 2023-08-15 17:59:16.027 [warning] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
 2023-08-15 17:59:16.411 [info] [<unknown>][51eeefc7][ExtensionHostConnection] New connection established.
 2023-08-15 17:59:16.421 [info] [<unknown>][51eeefc7][ExtensionHostConnection] <769> Launched Extension Host Process.
+2023-08-15 20:34:39.720 [info] [<unknown>][035bcef6][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2023-08-15 20:34:39.817 [info] [<unknown>][51eeefc7][ExtensionHostConnection] <769> Extension Host Process exited with code: 0, signal: null.
