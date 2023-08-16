@@ -22,7 +22,20 @@
             <div id="message">{{$post->message}}</div>
 
               <!-- //Delete Post Button -->
-              <div id="delete"><a href="{{url("delete_post/$post->post_id")}}">Delete</a></div>
+              <a href="{{url("delete_item/$item->id")}}">Delete this item</a>
+
+              <form method="post" action="{{url("add_item_action")}}">
+                  {{csrf_field()}}
+                  <p>
+                  <label>Summary</label>
+                  <input type="text" name="summary">
+                  </p>
+                  <p>
+                  <label>Details</label>
+                  <textarea type="text" name="details"></textarea>
+                  </p>
+                  <input type="submit" value="Add">
+              </form>
           </div>
           @endforeach
         </ul>

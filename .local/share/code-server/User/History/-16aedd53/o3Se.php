@@ -22,7 +22,7 @@
             <div id="message">{{$post->message}}</div>
 
               <!-- //Delete Post Button -->
-              <div id="delete"><a href="{{url("delete_post/$post->post_id")}}">Delete</a></div>
+              <a href="{{url("delete_post/$post->id")}}">Delete this item</a>
           </div>
           @endforeach
         </ul>

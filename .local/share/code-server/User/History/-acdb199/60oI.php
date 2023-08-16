@@ -37,7 +37,7 @@ Route::post('create_post_action', function(){
 
 //add the route to delete post
 Route::get('delete_post/{post_id}', function($post_id){
-    delete_post($post_id);
+    delete_item($post_id);
     return redirect("/");
 });
 

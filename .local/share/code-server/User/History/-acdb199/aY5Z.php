@@ -13,14 +13,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+//ROUTES
 
 Route::get('/', function(){
     $sql = "select * from Post";
     $posts = DB::select($sql);
-    dd($posts);
-    return view('pages.post_list');
+    return view('pages.post_list')->with('posts', $posts);
 });
+
+//Route action to add post and redirect to Home Page
+Route::post('create_post_action', function(){
+    $post_title = request('post_title');
+    $author = request('author');
+    $message = request('message');
+    create_user($author);
+    $id = create_post($post_title, $author, $message);
+    if ($id) {
+        return redirect("/");
+    } else {
+        die("Error while adding post.");
+    }
+});
+
+//add the route to delete post
+Route::get('delete_post/{post_id}', function($post_id){
+    delete_item($post_id);
+    return redirect("/");
+});
+
+
 
 Route::get('item_detail/{id}', function($id){
     $item = get_item($id);
@@ -36,24 +57,21 @@ Route::get('add_item', function(){
     return view("items.add_item");
 });
 
-Route::post('add_item_action', function(){
-    $summary = request('summary');
-    $details = request('details');
-    $id = add_item($summary, $details);
-    if ($id) {
-        return redirect("item_detail/$id");
-    } else {
-        die("Error while adding item.");
-    }
-});
 
+//FUNCTIONS
+//Create a new user
+function create_user($author){
+    $sql = "insert into User (user_name) values (?)";
+    DB::insert($sql, array($author));
+}
 
-
-//add the route to delete item
-Route::get('delete_item/{id}', function($id){
-    delete_item($id);
-    return redirect("/");
-});
+// function to create a new post and add to the DB
+function create_post($post_title, $author, $message){
+    $sql = "insert into Post (post_title, user_name, message) values (?, ?, ?)";
+    DB::insert($sql, array($post_title, $author, $message));
+    $id = DB::getPdo()->lastInsertId();
+    return($id);
+}
 
 
 function get_item($id) {
@@ -66,12 +84,6 @@ function get_item($id) {
     return $item;
 }
 
-function add_item($summary, $details){
-    $sql = "insert into item (summary, details) values (?, ?)";
-    DB::insert($sql, array($summary, $details));
-    $id = DB::getPdo()->lastInsertId();
-    return($id);
-}
 
 function delete_item($id) {
     $sql = "delete from item where id = ?";

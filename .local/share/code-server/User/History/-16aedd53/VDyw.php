@@ -20,9 +20,6 @@
             <div id="title">{{$post->post_title}}</div>
             <div id="author">{{$post->user_name}}</div>
             <div id="message">{{$post->message}}</div>
-
-              <!-- //Delete Post Button -->
-              <div id="delete"><a href="{{url("delete_post/$post->post_id")}}">Delete</a></div>
           </div>
           @endforeach
         </ul>
