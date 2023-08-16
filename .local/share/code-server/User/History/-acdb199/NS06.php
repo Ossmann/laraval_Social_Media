@@ -49,7 +49,7 @@ Route::get('users', function(){
 });
 
 // go to the detail view of a Post
-Route::get('post_detail/{post_id}', function($post_id){
+Route::get('item_detail/{post_id}', function($post_id){
     $post = get_post($post_id);
     return view('pages.post_detail')->with('post', $post);   
 });

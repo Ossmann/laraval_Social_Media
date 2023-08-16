@@ -17,6 +17,7 @@
         <ul>
           @foreach($posts as $post)
           <div id="post">
+            <div id="title">{{$post->post_title}}</div>
             <div id="title"><a href="{{url("post_detail/$post->post_id")}}">{{$post->post_title}}</a></div>
             <div id="author">{{$post->user_name}}</div>
             <div id="message">{{$post->message}}</div>

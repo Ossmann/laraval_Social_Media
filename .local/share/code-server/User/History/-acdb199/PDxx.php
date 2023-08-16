@@ -43,15 +43,13 @@ Route::get('delete_post/{post_id}', function($post_id){
 
 //route to users list
 Route::get('users', function(){
-    $sql = "select * from User";
-    $users = DB::select($sql);
-    return view('pages.users')->with('users', $users);
+    return view("users");
 });
 
-// go to the detail view of a Post
-Route::get('post_detail/{post_id}', function($post_id){
-    $post = get_post($post_id);
-    return view('pages.post_detail')->with('post', $post);   
+
+Route::get('item_detail/{id}', function($id){
+    $item = get_item($id);
+    return view('items.item_detail')->with('item', $item);   
 });
 
 Route::get('update_item/{id}', function($id){
@@ -85,15 +83,15 @@ function delete_post($post_id) {
     DB::delete($sql, array($post_id));
     }
 
-//function to get posts
-function get_post($post_id) {
-    $sql = "select * from Post where post_id=?";
-    $posts = DB::select($sql, array($post_id));
-    if (count($posts) != 1) {
+
+function get_item($id) {
+    $sql = "select * from item where id=?";
+    $items = DB::select($sql, array($id));
+    if (count($items) != 1) {
         die("something has gone wrong, invalid query or result: $sql");
     }
-    $post = $posts[0];
-    return $post;
+    $item = $items[0];
+    return $item;
 }
 
 

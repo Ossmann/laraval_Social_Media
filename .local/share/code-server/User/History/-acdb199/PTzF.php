@@ -49,7 +49,7 @@ Route::get('users', function(){
 });
 
 // go to the detail view of a Post
-Route::get('post_detail/{post_id}', function($post_id){
+Route::get('item_detail/{post_id}', function($post_id){
     $post = get_post($post_id);
     return view('pages.post_detail')->with('post', $post);   
 });
@@ -85,7 +85,7 @@ function delete_post($post_id) {
     DB::delete($sql, array($post_id));
     }
 
-//function to get posts
+
 function get_post($post_id) {
     $sql = "select * from Post where post_id=?";
     $posts = DB::select($sql, array($post_id));

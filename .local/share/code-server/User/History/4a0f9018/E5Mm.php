@@ -3,12 +3,12 @@
 @extends('layouts.master')
 
 @section('title')
-  Hompage - List of Posts
+  Users - List of Users
 @endsection
 
 @section('content')
 
-<h1>Home Page - List of Posts</h1>
+<h1>Users - List of Users</h1>
 
     <!-- left column -->
     <div class="col-sm-6">
@@ -17,7 +17,7 @@
         <ul>
           @foreach($posts as $post)
           <div id="post">
-            <div id="title"><a href="{{url("post_detail/$post->post_id")}}">{{$post->post_title}}</a></div>
+            <div id="title">{{$post->post_title}}</div>
             <div id="author">{{$post->user_name}}</div>
             <div id="message">{{$post->message}}</div>
 
