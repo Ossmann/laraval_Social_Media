@@ -17,8 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function(){
     $sql = "select * from Post";
     $posts = DB::select($sql);
-    dd($posts);
-    // return view('pages.post_list');
+    return view('pages.post_list')->with('posts', $posts);
 });
 
 Route::get('item_detail/{id}', function($id){
