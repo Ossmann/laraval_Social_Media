@@ -14,12 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
 Route::get('/', function(){
-    $sql = "select * from item";
-    $items = DB::select($sql);
-    //$items = array();
-    return view('pages.post_list');
+    $sql = "select * from Post";
+    $posts = DB::select($sql);
+    dd($posts);
+    // return view('pages.post_list');
 });
 
 Route::get('item_detail/{id}', function($id){
