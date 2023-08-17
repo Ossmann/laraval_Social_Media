@@ -223,3 +223,6 @@ File not found: /usr/local/code-server-4.13.0-linux-amd64/lib/vscode/node_module
 [10:56:23] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
 [16:05:12] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
 [18:54:50] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+[21:10:31] [<unknown>][9b99a0e0][ManagementConnection] Unknown reconnection token (never seen).
+[21:10:31] [<unknown>][f3c253d9][ExtensionHostConnection] Unknown reconnection token (never seen).
+[21:10:33] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory

@@ -1,0 +1,17 @@
+2023-08-17 21:10:27.692 [info] 
+
+
+
+
+2023-08-17 21:10:27.722 [info] Extension host agent started.
+2023-08-17 21:10:31.623 [error] [<unknown>][9b99a0e0][ManagementConnection] Unknown reconnection token (never seen).
+2023-08-17 21:10:31.840 [error] [<unknown>][f3c253d9][ExtensionHostConnection] Unknown reconnection token (never seen).
+2023-08-17 21:10:33.121 [info] [<unknown>][072576e8][ManagementConnection] New connection established.
+2023-08-17 21:10:33.609 [warning] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+2023-08-17 21:10:34.029 [info] [<unknown>][c41086a7][ExtensionHostConnection] New connection established.
+2023-08-17 21:10:34.040 [info] [<unknown>][c41086a7][ExtensionHostConnection] <818> Launched Extension Host Process.
+2023-08-17 21:16:19.318 [info] [<unknown>][072576e8][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2023-08-17 21:16:19.354 [info] [<unknown>][c41086a7][ExtensionHostConnection] <818> Extension Host Process exited with code: 0, signal: null.
+2023-08-17 21:16:23.618 [info] [<unknown>][a3e2323f][ManagementConnection] New connection established.
+2023-08-17 21:16:24.387 [info] [<unknown>][c35aa40f][ExtensionHostConnection] New connection established.
+2023-08-17 21:16:24.397 [info] [<unknown>][c35aa40f][ExtensionHostConnection] <2410> Launched Extension Host Process.

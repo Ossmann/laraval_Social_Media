@@ -883,3 +883,27 @@
 [18:54:49] [<unknown>][9b99a0e0][ManagementConnection] New connection established.
 [18:54:50] [<unknown>][f3c253d9][ExtensionHostConnection] New connection established.
 [18:54:50] [<unknown>][f3c253d9][ExtensionHostConnection] <626> Launched Extension Host Process.
+[2023-08-17T11:10:20.953Z] info  code-server 4.13.0 2798322b03e7f446f59c5142215c11711ed7a427
+[2023-08-17T11:10:20.954Z] info  Using user-data-dir ~/.local/share/code-server
+[2023-08-17T11:10:20.974Z] info  Using config file ~/.config/code-server/config.yaml
+[2023-08-17T11:10:20.974Z] info  HTTPS server listening on https://0.0.0.0:8443/
+[2023-08-17T11:10:20.974Z] info    - Authentication is enabled
+[2023-08-17T11:10:20.974Z] info      - Using password from $PASSWORD
+[2023-08-17T11:10:20.974Z] info    - Using certificate for HTTPS: ~/.local/share/code-server/localhost.crt
+[21:10:27] 
+
+
+
+
+[21:10:27] Extension host agent started.
+[21:10:33] [<unknown>][072576e8][ManagementConnection] New connection established.
+[21:10:34] [<unknown>][c41086a7][ExtensionHostConnection] New connection established.
+[21:10:34] [<unknown>][c41086a7][ExtensionHostConnection] <818> Launched Extension Host Process.
+[21:16:19] [<unknown>][072576e8][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+[21:16:19] [<unknown>][c41086a7][ExtensionHostConnection] <818> Extension Host Process exited with code: 0, signal: null.
+[21:16:23] [<unknown>][a3e2323f][ManagementConnection] New connection established.
+[21:16:24] [<unknown>][c35aa40f][ExtensionHostConnection] New connection established.
+[21:16:24] [<unknown>][c35aa40f][ExtensionHostConnection] <2410> Launched Extension Host Process.
+[IPC Library: Pty Host]  WARN Persistent process "1": Process had no disconnect runners but was an orphan
+[IPC Library: Pty Host]  INFO Persistent process reconnection "1"
+[IPC Library: Pty Host]  INFO Persistent process "1": Replaying 38 chars and 1 size events
