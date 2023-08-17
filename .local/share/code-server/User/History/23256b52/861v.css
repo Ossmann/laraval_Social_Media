@@ -66,27 +66,17 @@ form {
 }
 
 input {
-    border: 0px;
+    border-color: #DE0D92;
     box-shadow: inset 0px 6px 12px -1.6px #DE0D92;
-    border-radius: 6px;
 }
 
 textarea {
     border-color: #DE0D92;
-    border: 0px;
+    
     box-shadow: inset 0px 6px 12px -1.6px #DE0D92;
-    border-radius: 6px;
 }
 
 .comment {
-    display: flex;
-    align-items: center;
-    margin-left: 12px;
-    clear: both;
-    float: right;
-}
-
-.comment .comment-content {
     border: solid 3px;
     padding: 5px;
     padding-left: 10px;
@@ -94,7 +84,7 @@ textarea {
     border-radius: 10px;
     box-shadow: 4px 4px 4px #DE0D92;
     margin-top: 8px;
-    margin-left: 20px;
+    margin-left: 32px;
     font-size: small;
     color: black;
     background-color: #FDD8EF;
@@ -111,26 +101,5 @@ textarea {
 .comment .message {
     padding-left: 10px;
 }
-
-.speech-bubble {
-    position: relative;
-    width: 200px;
-    height: 100px;
-    background-color: #007bff;
-    border-radius: 10px;
-    padding: 15px;
-    color: white;
-  }
-
-  .arrow {
-    position: absolute;
-    top: 10px;
-    left: -20px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 20px 10px 0;
-    border-color: transparent #007bff transparent transparent;
-  }
 
 .antispam { display:none;}

@@ -41,7 +41,9 @@
         </form>
       </div>
     </nav>
-    
+
+    <i class="bi bi-dash-circle-fill"></i>
+
     @yield('content')
 
   </body>

@@ -20,18 +20,12 @@
         <ul>
           @foreach($posts as $post)
           <div class="post">
-            <div class="title"><a href="{{url("post_detail/$post->post_id")}}">{{$post->post_title}}</a></div>
-            <div class="author">{{$post->user_name}}</div>
-            <div class="message">{{$post->message}}</div>
+            <div post="title"><a href="{{url("post_detail/$post->post_id")}}">{{$post->post_title}}</a></div>
+            <div post="author">{{$post->user_name}}</div>
+            <div post="message">{{$post->message}}</div>
 
               <!-- //Delete Post Button -->
-              <div class="delete">
-              <a href="{{url("delete_post/$post->post_id")}}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
-              </svg>
-                Delete</a>
-              </div>
+              <div id="delete"><a href="{{url("delete_post/$post->post_id")}}">Delete</a></div>
           </div>
           @endforeach
         </ul>

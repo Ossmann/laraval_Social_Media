@@ -79,14 +79,6 @@ textarea {
 }
 
 .comment {
-    display: flex;
-    align-items: center;
-    margin-left: 12px;
-    clear: both;
-    float: right;
-}
-
-.comment .comment-content {
     border: solid 3px;
     padding: 5px;
     padding-left: 10px;
@@ -94,7 +86,7 @@ textarea {
     border-radius: 10px;
     box-shadow: 4px 4px 4px #DE0D92;
     margin-top: 8px;
-    margin-left: 20px;
+    margin-left: 32px;
     font-size: small;
     color: black;
     background-color: #FDD8EF;

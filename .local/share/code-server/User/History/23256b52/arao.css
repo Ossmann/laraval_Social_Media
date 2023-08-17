@@ -82,7 +82,6 @@ textarea {
     display: flex;
     align-items: center;
     margin-left: 12px;
-    clear: both;
     float: right;
 }
 
