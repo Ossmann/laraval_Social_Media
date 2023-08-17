@@ -834,3 +834,20 @@
 [08:30:47] [<unknown>][de6aa640][ManagementConnection] New connection established.
 [08:30:48] [<unknown>][99f2b727][ExtensionHostConnection] New connection established.
 [08:30:48] [<unknown>][99f2b727][ExtensionHostConnection] <674> Launched Extension Host Process.
+[09:13:03] [<unknown>][de6aa640][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+[2023-08-17T00:56:13.103Z] info  code-server 4.13.0 2798322b03e7f446f59c5142215c11711ed7a427
+[2023-08-17T00:56:13.104Z] info  Using user-data-dir ~/.local/share/code-server
+[2023-08-17T00:56:13.123Z] info  Using config file ~/.config/code-server/config.yaml
+[2023-08-17T00:56:13.123Z] info  HTTPS server listening on https://0.0.0.0:8443/
+[2023-08-17T00:56:13.123Z] info    - Authentication is enabled
+[2023-08-17T00:56:13.123Z] info      - Using password from $PASSWORD
+[2023-08-17T00:56:13.123Z] info    - Using certificate for HTTPS: ~/.local/share/code-server/localhost.crt
+[10:56:17] 
+
+
+
+
+[10:56:17] Extension host agent started.
+[10:56:22] [<unknown>][2b3afc54][ManagementConnection] New connection established.
+[10:56:23] [<unknown>][33873d61][ExtensionHostConnection] New connection established.
+[10:56:23] [<unknown>][33873d61][ExtensionHostConnection] <626> Launched Extension Host Process.
