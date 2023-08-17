@@ -867,3 +867,19 @@
 [16:05:11] [<unknown>][7d7532ee][ManagementConnection] New connection established.
 [16:05:12] [<unknown>][29f8456f][ExtensionHostConnection] New connection established.
 [16:05:12] [<unknown>][29f8456f][ExtensionHostConnection] <626> Launched Extension Host Process.
+[2023-08-17T08:54:36.717Z] info  code-server 4.13.0 2798322b03e7f446f59c5142215c11711ed7a427
+[2023-08-17T08:54:36.718Z] info  Using user-data-dir ~/.local/share/code-server
+[2023-08-17T08:54:36.738Z] info  Using config file ~/.config/code-server/config.yaml
+[2023-08-17T08:54:36.738Z] info  HTTPS server listening on https://0.0.0.0:8443/
+[2023-08-17T08:54:36.739Z] info    - Authentication is enabled
+[2023-08-17T08:54:36.739Z] info      - Using password from $PASSWORD
+[2023-08-17T08:54:36.739Z] info    - Using certificate for HTTPS: ~/.local/share/code-server/localhost.crt
+[18:54:42] 
+
+
+
+
+[18:54:42] Extension host agent started.
+[18:54:49] [<unknown>][9b99a0e0][ManagementConnection] New connection established.
+[18:54:50] [<unknown>][f3c253d9][ExtensionHostConnection] New connection established.
+[18:54:50] [<unknown>][f3c253d9][ExtensionHostConnection] <626> Launched Extension Host Process.
