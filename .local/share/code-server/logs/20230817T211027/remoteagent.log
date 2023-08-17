@@ -15,3 +15,5 @@
 2023-08-17 21:16:23.618 [info] [<unknown>][a3e2323f][ManagementConnection] New connection established.
 2023-08-17 21:16:24.387 [info] [<unknown>][c35aa40f][ExtensionHostConnection] New connection established.
 2023-08-17 21:16:24.397 [info] [<unknown>][c35aa40f][ExtensionHostConnection] <2410> Launched Extension Host Process.
+2023-08-18 00:22:00.845 [info] [<unknown>][c35aa40f][ExtensionHostConnection] The client has reconnected.
+2023-08-18 00:22:01.061 [info] [<unknown>][a3e2323f][ManagementConnection] The client has reconnected.

@@ -20,7 +20,7 @@
 
 <div class="container">
 
-<h1>Home Page - List of Posts</h1>
+<h1>Home Page - List of Posts - {{$like_toggle}}</h1>
 
   <div class = "row" id="content">
 
@@ -52,7 +52,7 @@
               <form method="post" action="{{url("create_like_action")}}">
                 {{csrf_field()}}
                   <p>
-                    <input type="text" name="author" placeholder="Enter user name">
+                    <input type="text" name="user_name" placeholder="Enter user name">
                   </p>
                 <input type="submit" value="Like">
               </form>

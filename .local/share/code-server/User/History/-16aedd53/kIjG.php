@@ -48,20 +48,12 @@
             <div class="author">{{$post->user_name}}</div>
             <div class="message">{{$post->message}}</div>
 
-            @if ($like_toggle)
-              <form method="post" action="{{url("create_like_action")}}">
-                {{csrf_field()}}
-                  <p>
-                    <input type="text" name="author" placeholder="Enter user name">
-                  </p>
-                <input type="submit" value="Like">
-              </form>
-            @else
+            @if ($like)
+
               <!-- //Like Button -->
               <div class="like_button">
               <a class="nav-link" href="{{url("/like_input")}}"><i class="bi bi-hand-thumbs-up-fill"></i></a>
               </div>
-            @endif
 
               <!-- //Delete Post Button -->
               <div class="delete">
@@ -98,7 +90,7 @@
                 <textarea type="text" name="message"></textarea>
               </p>
             <input type="submit" value="Post">
-          </form>
+          <!-- </form> -->
         </div>
   </div>
 </div><!-- /.container -->

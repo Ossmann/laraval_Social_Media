@@ -62,20 +62,21 @@ Route::post('create_comment_action', function(){
     if ($id) {
         return redirect("/post_detail/{$post_id}");
     } else {
-        die("Error while adding comment.");
+        die("Error while adding post.");
     }
 });
 
 //Route action to add comment and redirect to Detail Page
 Route::post('create_like_action', function(){
     $author = request('author');
+    $comment_message = request('comment_message');
     $post_id = request('post_id');
     create_user($author);
-    $id = create_like($author, $post_id);
+    $id = create_comment($author, $comment_message, $post_id); // need to add DATE
     if ($id) {
-        return redirect("/");
+        return redirect("/post_detail/{$post_id}");
     } else {
-        die("Error while adding like.");
+        die("Error while adding post.");
     }
 });
 
@@ -148,14 +149,6 @@ function create_post($post_title, $author, $message){
 function create_comment($author, $comment_message, $post_id){ //add DATE
     $sql = "insert into Comment (user_name, comment_message, post_id) values (?, ?, ?)"; //add DATE
     DB::insert($sql, array($author, $comment_message, $post_id)); //add DATE
-    $id = DB::getPdo()->lastInsertId();
-    return($id);
-}
-
-// function to create a new like and add to the DB
-function create_like($author, $post_id){ 
-    $sql = "insert into Like (user_name, post_id) values (?, ?)";
-    DB::insert($sql, array($author, $post_id));
     $id = DB::getPdo()->lastInsertId();
     return($id);
 }

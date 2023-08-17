@@ -49,12 +49,21 @@
             <div class="message">{{$post->message}}</div>
 
             @if ($like_toggle)
-              <form method="post" action="{{url("create_like_action")}}">
+              <form method="post" action="{{url("create_post_action")}}">
                 {{csrf_field()}}
                   <p>
-                    <input type="text" name="author" placeholder="Enter user name">
+                    <label>Post Title</label>
+                    <input type="text" name="post_title">
                   </p>
-                <input type="submit" value="Like">
+                  <p>
+                    <label>Author</label>
+                    <input type="text" name="author">
+                  </p>
+                  <p>
+                    <label>Message</label>
+                    <textarea type="text" name="message"></textarea>
+                  </p>
+                <input type="submit" value="Post">
               </form>
             @else
               <!-- //Like Button -->

@@ -48,11 +48,12 @@
             <div class="author">{{$post->user_name}}</div>
             <div class="message">{{$post->message}}</div>
 
-            @if ($like_toggle)
-              <form method="post" action="{{url("create_like_action")}}">
+            @if ($like_toggle != true)
+              <form method="post" action="{{url("create_post_action")}}">
                 {{csrf_field()}}
                   <p>
-                    <input type="text" name="author" placeholder="Enter user name">
+                    <label>Author</label>
+                    <input type="text" name="author">
                   </p>
                 <input type="submit" value="Like">
               </form>

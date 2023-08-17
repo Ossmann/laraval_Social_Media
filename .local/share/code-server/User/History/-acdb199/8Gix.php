@@ -14,28 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 //ROUTES
-//Home Page
+
 Route::get('/', function(){
     $sql = "select * from Post";
     $posts = DB::select($sql);
     $posts = count_comments($posts);
-    $like_toggle = false;
-    return view('pages.post_list')->with([
-        'posts' => $posts,
-        'like_toggle' => $like_toggle,
-    ]);
-});
-
-//Homepage when Like button is pressed
-Route::get('/like_input', function(){
-    $sql = "select * from Post";
-    $posts = DB::select($sql);
-    $posts = count_comments($posts);
-    $like_toggle = true;
-    return view('pages.post_list')->with([
-        'posts' => $posts,
-        'like_toggle' => $like_toggle,
-    ]);
+    return view('pages.post_list')->with('posts', $posts);
 });
 
 //Route action to add post and redirect to Home Page
@@ -62,20 +46,7 @@ Route::post('create_comment_action', function(){
     if ($id) {
         return redirect("/post_detail/{$post_id}");
     } else {
-        die("Error while adding comment.");
-    }
-});
-
-//Route action to add comment and redirect to Detail Page
-Route::post('create_like_action', function(){
-    $author = request('author');
-    $post_id = request('post_id');
-    create_user($author);
-    $id = create_like($author, $post_id);
-    if ($id) {
-        return redirect("/");
-    } else {
-        die("Error while adding like.");
+        die("Error while adding post.");
     }
 });
 
@@ -127,13 +98,8 @@ Route::get('add_item', function(){
 ///////// FUNCTIONS
 //Create a new user
 function create_user($author){
-    $sql = "SELECT * FROM User WHERE user_name =?";
-    $unique_author = DB::select($sql, [$author]);
-
-    if (empty($unique_author)) {
-        $sql2 = "insert into User (user_name) values (?)";
-        DB::insert($sql2, array($author));
-    }
+    $sql = "insert into User (user_name) values (?)";
+    DB::insert($sql, array($author));
 }
 
 // function to create a new post and add to the DB
@@ -150,32 +116,6 @@ function create_comment($author, $comment_message, $post_id){ //add DATE
     DB::insert($sql, array($author, $comment_message, $post_id)); //add DATE
     $id = DB::getPdo()->lastInsertId();
     return($id);
-}
-
-// function to create a new like and add to the DB
-function create_like($author, $post_id){ 
-    $sql = "insert into Like (user_name, post_id) values (?, ?)";
-    DB::insert($sql, array($author, $post_id));
-    $id = DB::getPdo()->lastInsertId();
-    return($id);
-}
-
-//function to get comments for a detail post
-function get_comments($post_id) {
-    $sql = "select * from Comment where post_id=?";
-    $comments = DB::select($sql, array($post_id));
-    return $comments;
-}
-
-//function to get posts
-function get_post($post_id) {
-    $sql = "select * from Post where post_id=?";
-    $posts = DB::select($sql, array($post_id));
-    if (count($posts) != 1) {
-        die("something has gone wrong, invalid query or result: $sql");
-    }
-    $post = $posts[0];
-    return $post;
 }
 
 //// Delete functions
@@ -209,7 +149,21 @@ function delete_user($user_name) {
     DB::delete($sql, array($user_name));
     }
 
+//function to get posts
+function get_post($post_id) {
+    $sql = "select * from Post where post_id=?";
+    $posts = DB::select($sql, array($post_id));
+    if (count($posts) != 1) {
+        die("something has gone wrong, invalid query or result: $sql");
+    }
+    $post = $posts[0];
+    return $post;
+}
+
+
 /// SPECIAL functions
+//function to get comments for a detail post
+
 //function to count number of comments for a post
 function count_comments($posts) {
     foreach ($posts as $post) {

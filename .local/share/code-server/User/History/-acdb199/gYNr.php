@@ -152,14 +152,6 @@ function create_comment($author, $comment_message, $post_id){ //add DATE
     return($id);
 }
 
-// function to create a new like and add to the DB
-function create_like($author, $post_id){ 
-    $sql = "insert into Like (user_name, post_id) values (?, ?)";
-    DB::insert($sql, array($author, $post_id));
-    $id = DB::getPdo()->lastInsertId();
-    return($id);
-}
-
 //function to get comments for a detail post
 function get_comments($post_id) {
     $sql = "select * from Comment where post_id=?";
