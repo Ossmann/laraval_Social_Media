@@ -909,3 +909,36 @@
 [IPC Library: Pty Host]  INFO Persistent process "1": Replaying 38 chars and 1 size events
 [00:22:00] [<unknown>][c35aa40f][ExtensionHostConnection] The client has reconnected.
 [00:22:01] [<unknown>][a3e2323f][ManagementConnection] The client has reconnected.
+[2023-08-17T16:30:23.489Z] info  code-server 4.13.0 2798322b03e7f446f59c5142215c11711ed7a427
+[2023-08-17T16:30:23.490Z] info  Using user-data-dir ~/.local/share/code-server
+[2023-08-17T16:30:23.509Z] info  Using config file ~/.config/code-server/config.yaml
+[2023-08-17T16:30:23.509Z] info  HTTPS server listening on https://0.0.0.0:8443/
+[2023-08-17T16:30:23.509Z] info    - Authentication is enabled
+[2023-08-17T16:30:23.509Z] info      - Using password from $PASSWORD
+[2023-08-17T16:30:23.509Z] info    - Using certificate for HTTPS: ~/.local/share/code-server/localhost.crt
+[02:30:28] 
+
+
+
+
+[02:30:28] Extension host agent started.
+[02:30:33] [<unknown>][0f27960c][ManagementConnection] New connection established.
+[02:30:34] [<unknown>][619e83e3][ExtensionHostConnection] New connection established.
+[02:30:34] [<unknown>][619e83e3][ExtensionHostConnection] <866> Launched Extension Host Process.
+[05:18:03] [<unknown>][0f27960c][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+[2023-08-18T10:41:38.194Z] info  code-server 4.13.0 2798322b03e7f446f59c5142215c11711ed7a427
+[2023-08-18T10:41:38.195Z] info  Using user-data-dir ~/.local/share/code-server
+[2023-08-18T10:41:38.214Z] info  Using config file ~/.config/code-server/config.yaml
+[2023-08-18T10:41:38.214Z] info  HTTPS server listening on https://0.0.0.0:8443/
+[2023-08-18T10:41:38.214Z] info    - Authentication is enabled
+[2023-08-18T10:41:38.214Z] info      - Using password from $PASSWORD
+[2023-08-18T10:41:38.214Z] info    - Using certificate for HTTPS: ~/.local/share/code-server/localhost.crt
+[20:42:44] 
+
+
+
+
+[20:42:44] Extension host agent started.
+[20:42:50] [<unknown>][39afa60d][ManagementConnection] New connection established.
+[20:42:51] [<unknown>][7c05df1e][ExtensionHostConnection] New connection established.
+[20:42:51] [<unknown>][7c05df1e][ExtensionHostConnection] <722> Launched Extension Host Process.
