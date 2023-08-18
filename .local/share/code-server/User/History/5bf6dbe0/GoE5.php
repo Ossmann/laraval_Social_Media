@@ -35,7 +35,7 @@
                 <div class="like_button">
                 <i class="bi bi-hand-thumbs-up-fill"></i>
                 </div>
-                <!-- Like counter -->
+                {{$post->like_counter}}
               </div>
       </div>
 
@@ -46,10 +46,7 @@
       <div class="comment">
         <i class="bi bi-chat-right-text-fill"></i>
           <div class="comment-content">
-            <div class="topline">
             <div class="author">{{$comment->user_name}}</div>
-            <div class="date">{{$comment->date}}</div>
-            </div>
             <div class="message">{{$comment->comment_message}}</div>
           </div>
       </div>

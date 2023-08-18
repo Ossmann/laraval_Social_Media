@@ -23,21 +23,46 @@
     <!-- left column -->
     <div class="col-sm-6">
 
-      <div class="post">
-            <p><h3>{{$post->post_title}}</h3></p>
-              <div class="author">{{$post->user_name}}</div>
+    <div class="post">
+            <div class="topline">
+              <div class="title"><a href="{{url("post_detail/$post->post_id")}}">{{$post->post_title}}</a>
+
+                <!-- Comment Counter -->
+                <div class="comment_counter">
+                  <i class="bi bi-chat-left-text"></i>
+                  {{ $post->comment_counter}}
+                </div>
+              </div>
               <div class="date">{{$post->date}}</div>
-            <div class="message">{{$post->message}}</div>
+            </div>
+            
+            <div class="author">{{$post->user_name}}</div>
 
-
-              <!-- //Like Button ?? CHECK IF here we can Like aswell --> 
+            @if ($like_toggle)
+              <form method="post" action="{{url("create_like_action")}}">
+                {{csrf_field()}}
+                  <p>
+                    <input type="text" name="author" placeholder="Enter user name">
+                  </p>
+                <input type="submit" value="Like">
+              </form>
+            @else
+              <!-- //Like Button -->
               <div class="like">
                 <div class="like_button">
-                <i class="bi bi-hand-thumbs-up-fill"></i>
+                <a class="nav-link" href="{{url("/like_input")}}"><i class="bi bi-hand-thumbs-up-fill"></i></a>
                 </div>
-                <!-- Like counter -->
+                {{$post->like_counter}}
               </div>
-      </div>
+            @endif
+
+              <!-- //Delete Post Button -->
+              <div class="delete">
+              <a href="{{url("delete_post/$post->post_id")}}">
+                <i class="bi bi-dash-circle-fill"></i>
+                Delete</a>
+              </div>
+          </div>
 
 
       <!-- Loop to display coments for a Post -->
@@ -46,10 +71,7 @@
       <div class="comment">
         <i class="bi bi-chat-right-text-fill"></i>
           <div class="comment-content">
-            <div class="topline">
             <div class="author">{{$comment->user_name}}</div>
-            <div class="date">{{$comment->date}}</div>
-            </div>
             <div class="message">{{$comment->comment_message}}</div>
           </div>
       </div>

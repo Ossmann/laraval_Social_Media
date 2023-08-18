@@ -30,22 +30,10 @@
       @if ($posts)
         <ul>
           @foreach($posts as $post)
-          <div class="post">
-            <div class="topline">
-              <div class="title"><a href="{{url("post_detail/$post->post_id")}}">{{$post->post_title}}</a>
-
-                <!-- Comment Counter -->
-                <div class="comment_counter">
-                  <i class="bi bi-chat-left-text"></i>
-                  {{ $post->comment_counter}}
-                </div>
-              </div>
-              <div class="date">{{$post->date}}</div>
-            </div>
+          <div class="date">{{$post->date}}</div>
             
             <div class="author">{{$post->user_name}}</div>
 
-            <!-- Like Button with Button to add author -->
             @if ($like_toggle)
               <form method="post" action="{{url("create_like_action")}}">
                 {{csrf_field()}}

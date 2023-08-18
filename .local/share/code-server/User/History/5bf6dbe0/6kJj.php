@@ -46,7 +46,7 @@
       <div class="comment">
         <i class="bi bi-chat-right-text-fill"></i>
           <div class="comment-content">
-            <div class="topline">
+            <div class="topline'>
             <div class="author">{{$comment->user_name}}</div>
             <div class="date">{{$comment->date}}</div>
             </div>

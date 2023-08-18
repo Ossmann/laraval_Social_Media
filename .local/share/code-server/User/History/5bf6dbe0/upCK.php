@@ -46,10 +46,7 @@
       <div class="comment">
         <i class="bi bi-chat-right-text-fill"></i>
           <div class="comment-content">
-            <div class="topline">
             <div class="author">{{$comment->user_name}}</div>
-            <div class="date">{{$comment->date}}</div>
-            </div>
             <div class="message">{{$comment->comment_message}}</div>
           </div>
       </div>
@@ -71,6 +68,7 @@
                 <label>Author</label>
                 <input type="text" name="author">
               </p>
+              <div class="date">{{$comment->date}}</div>
               <p>
                 <label>Message</label>
                 <textarea type="text" name="comment_message"></textarea>

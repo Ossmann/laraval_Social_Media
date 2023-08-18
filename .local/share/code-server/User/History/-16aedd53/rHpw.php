@@ -45,7 +45,7 @@
             
             <div class="author">{{$post->user_name}}</div>
 
-            <!-- Like Button with Button to add author -->
+            
             @if ($like_toggle)
               <form method="post" action="{{url("create_like_action")}}">
                 {{csrf_field()}}

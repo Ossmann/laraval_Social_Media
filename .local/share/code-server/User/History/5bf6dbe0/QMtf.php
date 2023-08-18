@@ -24,19 +24,11 @@
     <div class="col-sm-6">
 
       <div class="post">
+        <div class="title"></div>
             <p><h3>{{$post->post_title}}</h3></p>
               <div class="author">{{$post->user_name}}</div>
               <div class="date">{{$post->date}}</div>
             <div class="message">{{$post->message}}</div>
-
-
-              <!-- //Like Button ?? CHECK IF here we can Like aswell --> 
-              <div class="like">
-                <div class="like_button">
-                <i class="bi bi-hand-thumbs-up-fill"></i>
-                </div>
-                <!-- Like counter -->
-              </div>
       </div>
 
 
@@ -46,10 +38,7 @@
       <div class="comment">
         <i class="bi bi-chat-right-text-fill"></i>
           <div class="comment-content">
-            <div class="topline">
             <div class="author">{{$comment->user_name}}</div>
-            <div class="date">{{$comment->date}}</div>
-            </div>
             <div class="message">{{$comment->comment_message}}</div>
           </div>
       </div>

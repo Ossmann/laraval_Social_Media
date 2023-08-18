@@ -150,7 +150,7 @@ function create_post($post_title, $author, $message){
 function create_comment($author, $comment_message, $post_id){ 
     $sql = "insert into Comment (user_name, comment_message, post_id, date) values (?, ?, ?, ?)";
     $current_date = date('Y-m-d');
-    DB::insert($sql, array($author, $comment_message, $post_id, $current_date));
+    DB::insert($sql, array($author, $comment_message, $post_id, $curr));
     $id = DB::getPdo()->lastInsertId();
     return($id);
 }
