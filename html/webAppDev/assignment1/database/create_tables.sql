@@ -61,5 +61,5 @@ create table Reply (
     FOREIGN KEY (comment_id) REFERENCES Comment (comment_id)
 );
 
-insert into Reply values (1, "Marco Arnautovic", 1, "Thanks for pointing it out brother", '2023-01-12');
-insert into Reply values (2, "David Alaba", 2, "What a great goal my friend", '2023-01-12');
+insert into Reply values (1, "David Alaba", 1, "Always my friend.", '2023-01-12');
+insert into Reply values (2, "Marco Arnautovic", 2, "Thanks. I can teach you how to do it.", '2023-01-12');

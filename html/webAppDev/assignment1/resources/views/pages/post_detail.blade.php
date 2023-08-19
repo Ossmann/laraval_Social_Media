@@ -17,7 +17,6 @@
 
 @dump($post)
 @dump($comments)
-@dump($replies)
 
 <div class="container">
 <h1>Details</h1>
@@ -42,26 +41,42 @@
                 <!-- Like counter -->
               </div>
       </div>
-
-
-      <!-- Loop to display coments for a Post -->
       @foreach($comments as $comment)
-      <div class="comment">
-        <div class="commentline">
-          <i class="bi bi-chat-right-text-fill"></i>
+        <div class="comment">
+          <div class="commentline">
+            <i class="bi bi-chat-right-text-fill"></i>
             <div class="comment-content">
               <div class="topline">
-              <div class="author">{{$comment->user_name}}</div>
-              <div class="date">{{$comment->date}}</div>
+                <div class="author">{{$comment->user_name}}</div>
+                <div class="date">{{$comment->date}}</div>
               </div>
               <div class="message">{{$comment->comment_message}}</div>
             </div>
+          </div>
+          <div class="reply">
+            <a href="create_reply_action"><i class="bi bi-reply-all-fill"></i>Reply</a>
+          </div>
         </div>
+
+        @foreach($comment->replies as $reply)
         <div class="reply">
-              <a href="create_reply_action"><i class="bi bi-reply-all-fill"></i>Reply</a>
+          <div class="replyline">
+            <div class="reply-content">
+              <div class="topline">
+                <div class="author">{{$reply->user_name}}</div>
+                <div class="date">{{$reply->date}}</div>
+              </div>
+              <div class="message">{{$reply->reply_message}}</div>
+            </div>
+            <div class="reply_icon">
+              <i class="bi bi-chat-left-text"></i>
+            </div>
+          </div>
         </div>
-      </div>
-      @endforeach
+        @endforeach
+
+        @endforeach
+
 
 
     </div>
@@ -74,7 +89,7 @@
             {{csrf_field()}}
             <p>Comment on Post</p>
               <!-- send post_id with the form to be able to insert into DB with comment -->
-              <input type="hidden" name="post_id" value="{{ $post->post_id}}">
+              <input type="hidden" name="post_id" value="{{$post->post_id}}">
               <p>
                 <label>Author</label>
                 <input type="text" name="author">

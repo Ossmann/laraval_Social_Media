@@ -112,6 +112,7 @@ textarea {
     border-radius: 6px;
 }
 
+/* Comment Styles */
 .commentline {
     display: flex;
     align-items: center;
@@ -144,6 +145,40 @@ textarea {
 
 .comment .message {
     padding-left: 10px;
+}
+
+/* Replies Styles */
+.replyline {
+    display: flex;
+    align-items: center;
+    clear: both;
+}
+
+.reply .reply-content {
+    border: solid 2px;
+    padding: 1px;
+    padding-left: 10px;
+    border-color: #4D6CFA;
+    border-radius: 10px;
+    box-shadow: -2px 3px 3px #4D6CFA;
+    margin-top: 8px;
+    font-size: small;
+    color: black;
+    background-color: #D7DFFE;
+}
+
+.reply .author {
+        padding: 1px;
+        font-weight: bold;
+        text-decoration: underline;
+}
+
+.reply .message {
+    padding-right: 10px;
+}
+
+.reply_icon {
+    margin-left: 20px;
 }
 
 .like {

@@ -31,13 +31,9 @@ Route::get('/', function(){
 Route::get('post_detail/{post_id}', function($post_id){
     $post = get_post($post_id);
     $comments = get_comments($post_id);
-    foreach ($comments as $comment) {
-        $replies = get_replies($comment);
-    }
     return view('pages.post_detail')->with([
         'post' => $post,
         'comments' => $comments,
-        'replies' => $replies,
     ]);  
 });
 
@@ -186,8 +182,7 @@ function get_comments($post_id) {
     $sql = "select * from Comment where post_id=?";
     $comments = DB::select($sql, array($post_id));
     foreach ($comments as $comment) {
-        $sql_reply = "select * from Reply where comment_id=?";
-        $replies = DB::select($sql_reply, array($comment->comment_id));
+        $comment->replies = get_replies($comment);
     }
     return $comments;
 }
