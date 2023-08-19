@@ -23,16 +23,16 @@ insert into Post values (2, "I am the best", "Marco Arnautovic", "Everyone doubt
 
 drop table if exists Like;
 create table Like (
-    like_id integer not null primary key autoincrement,
     post_id integer,
     user_name varchar(20),
 
+    PRIMARY KEY (post_id, user_name),
     FOREIGN KEY (user_name) REFERENCES User (user_name),
     FOREIGN KEY (post_id) REFERENCES Post (post_id)
 );
 
-insert into Like values (1, 1, 'Marco Arnautovic');
-insert into Like values (2, 2, 'David Alaba');
+insert into Like values (1, 'Marco Arnautovic');
+insert into Like values (2, 'David Alaba');
 
 drop table if exists Comment;
 create table Comment (
@@ -40,7 +40,7 @@ create table Comment (
     user_name varchar(20),
     post_id integer,
     comment_message varchar(200),
-    date DATE YYYY-MM-DD,
+    date DATE,
 
     FOREIGN KEY (user_name) REFERENCES User (user_name),
     FOREIGN KEY (post_id) REFERENCES Post (post_id)
@@ -49,14 +49,17 @@ create table Comment (
 insert into Comment values (1, "Marco Arnautovic", 1, "Thanks for pointing it out brother", '2023-01-12');
 insert into Comment values (2, "David Alaba", 2, "What a great goal my friend", '2023-01-12');
 
-drop table if exists CommentAnswer;
-create table CommentAnswer (
-        answer_id integer not null primary key autoincrement,
+drop table if exists Reply;
+create table Reply (
+        reply_id integer not null primary key autoincrement,
         user_name varchar(20),
         comment_id integer,
-        answer_message varchar(60),
+        reply_message varchar(60),
         date DATE,
 
     FOREIGN KEY (user_name) REFERENCES User (user_name),
     FOREIGN KEY (comment_id) REFERENCES Comment (comment_id)
 );
+
+insert into Reply values (1, "Marco Arnautovic", 1, "Thanks for pointing it out brother", '2023-01-12');
+insert into Reply values (2, "David Alaba", 2, "What a great goal my friend", '2023-01-12');

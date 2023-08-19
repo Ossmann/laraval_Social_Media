@@ -112,7 +112,7 @@ textarea {
     border-radius: 6px;
 }
 
-.comment {
+.commentline {
     display: flex;
     align-items: center;
     margin-left: 12px;
@@ -184,6 +184,13 @@ textarea {
     align-items: center;
     font-size: smaller;
     margin-top: 8px;
+}
+
+.reply a {
+    display: flex;
+    align-items: center;
+    font-size: small;
+    float: right;
 }
 
 .antispam { display:none;}

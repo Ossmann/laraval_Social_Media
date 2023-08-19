@@ -27,6 +27,20 @@ Route::get('/', function(){
     ]);
 });
 
+// go to the detail view of a Post
+Route::get('post_detail/{post_id}', function($post_id){
+    $post = get_post($post_id);
+    $comments = get_comments($post_id);
+    foreach ($comments as $comment) {
+        $replies = get_replies($comment);
+    }
+    return view('pages.post_detail')->with([
+        'post' => $post,
+        'comments' => $comments,
+        'replies' => $replies,
+    ]);  
+});
+
 //Homepage when Like button is pressed
 Route::get('/like_input', function(){
     $sql = "select * from Post";
@@ -67,6 +81,7 @@ Route::post('create_comment_action', function(){
     }
 });
 
+
 //Route action to add comment and redirect to Detail Page
 Route::post('create_like_action', function(){
     $author = request('author');
@@ -104,16 +119,6 @@ Route::get('users', function(){
     return view('pages.users')->with('users', $users);
 });
 
-// go to the detail view of a Post
-Route::get('post_detail/{post_id}', function($post_id){
-    $post = get_post($post_id);
-    $comments = get_comments($post_id);
-    return view('pages.post_detail')->with([
-        'post' => $post,
-        'comments' => $comments,
-    ]);  
-});
-
 
 Route::get('update_item/{id}', function($id){
     $item = get_item($id);
@@ -126,6 +131,7 @@ Route::get('add_item', function(){
 
 
 ///////// FUNCTIONS
+///// CREATE Functions
 //Create a new user
 function create_user($author){
     $sql = "SELECT * FROM User WHERE user_name =?";
@@ -163,13 +169,7 @@ function create_like($author, $post_id){
     return($id);
 }
 
-//function to get comments for a detail post
-function get_comments($post_id) {
-    $sql = "select * from Comment where post_id=?";
-    $comments = DB::select($sql, array($post_id));
-    return $comments;
-}
-
+///// GET Functions
 //function to get posts
 function get_post($post_id) {
     $sql = "select * from Post where post_id=?";
@@ -179,6 +179,24 @@ function get_post($post_id) {
     }
     $post = $posts[0];
     return $post;
+}
+
+//function to get comments and replies for a detail post
+function get_comments($post_id) {
+    $sql = "select * from Comment where post_id=?";
+    $comments = DB::select($sql, array($post_id));
+    foreach ($comments as $comment) {
+        $sql_reply = "select * from Reply where comment_id=?";
+        $replies = DB::select($sql_reply, array($comment->comment_id));
+    }
+    return $comments;
+}
+
+//function to get comments and replies for a detail post
+function get_replies($comment) {
+    $sql = "select * from Reply where comment_id=?";
+    $replies = DB::select($sql, array($comment->comment_id));
+    return $replies;
 }
 
 //// Delete functions

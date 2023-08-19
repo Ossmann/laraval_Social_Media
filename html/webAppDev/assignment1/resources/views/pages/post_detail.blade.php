@@ -15,6 +15,10 @@
 
 @section('content')
 
+@dump($post)
+@dump($comments)
+@dump($replies)
+
 <div class="container">
 <h1>Details</h1>
 
@@ -42,16 +46,20 @@
 
       <!-- Loop to display coments for a Post -->
       @foreach($comments as $comment)
-
       <div class="comment">
-        <i class="bi bi-chat-right-text-fill"></i>
-          <div class="comment-content">
-            <div class="topline">
-            <div class="author">{{$comment->user_name}}</div>
-            <div class="date">{{$comment->date}}</div>
+        <div class="commentline">
+          <i class="bi bi-chat-right-text-fill"></i>
+            <div class="comment-content">
+              <div class="topline">
+              <div class="author">{{$comment->user_name}}</div>
+              <div class="date">{{$comment->date}}</div>
+              </div>
+              <div class="message">{{$comment->comment_message}}</div>
             </div>
-            <div class="message">{{$comment->comment_message}}</div>
-          </div>
+        </div>
+        <div class="reply">
+              <a href="create_reply_action"><i class="bi bi-reply-all-fill"></i>Reply</a>
+        </div>
       </div>
       @endforeach
 
