@@ -1,0 +1,31 @@
+2023-08-20 12:09:34.952 [info] 
+
+
+
+
+2023-08-20 12:09:34.986 [info] Extension host agent started.
+2023-08-20 12:09:39.954 [info] [<unknown>][35dc093d][ManagementConnection] New connection established.
+2023-08-20 12:09:40.460 [warning] Using the in-memory credential store as the operating system's credential store could not be accessed. Please see https://aka.ms/vscode-server-keyring on how to set this up. Details: libsecret-1.so.0: cannot open shared object file: No such file or directory
+2023-08-20 12:09:40.767 [info] [<unknown>][d09c9907][ExtensionHostConnection] New connection established.
+2023-08-20 12:09:40.774 [info] [<unknown>][d09c9907][ExtensionHostConnection] <770> Launched Extension Host Process.
+2023-08-20 12:26:09.485 [info] [<unknown>][35dc093d][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+2023-08-20 12:49:42.869 [info] [<unknown>][35dc093d][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+2023-08-20 12:49:42.870 [info] [<unknown>][eb602636][ManagementConnection] New connection established.
+2023-08-20 12:49:43.622 [info] [<unknown>][6ae317b1][ExtensionHostConnection] New connection established.
+2023-08-20 12:49:43.629 [info] [<unknown>][6ae317b1][ExtensionHostConnection] <9672> Launched Extension Host Process.
+2023-08-20 12:54:43.044 [info] [<unknown>][35dc093d][ManagementConnection] The reconnection short grace time of 5m has expired, so the connection will be disposed.
+2023-08-20 12:54:43.167 [info] [<unknown>][d09c9907][ExtensionHostConnection] <770> Extension Host Process exited with code: 0, signal: null.
+2023-08-20 14:36:49.220 [info] [<unknown>][dcc06516][ManagementConnection] New connection established.
+2023-08-20 14:36:49.886 [info] [<unknown>][0d1090ce][ExtensionHostConnection] New connection established.
+2023-08-20 14:36:49.896 [info] [<unknown>][0d1090ce][ExtensionHostConnection] <41513> Launched Extension Host Process.
+2023-08-20 14:51:27.077 [info] [<unknown>][eb602636][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+2023-08-20 15:38:04.644 [info] [<unknown>][dcc06516][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+2023-08-20 16:34:04.120 [info] [<unknown>][eb602636][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+2023-08-20 16:34:04.120 [info] [<unknown>][dcc06516][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+2023-08-20 16:34:04.120 [info] [<unknown>][48042cf5][ManagementConnection] New connection established.
+2023-08-20 16:34:04.906 [info] [<unknown>][4fc26552][ExtensionHostConnection] New connection established.
+2023-08-20 16:34:04.915 [info] [<unknown>][4fc26552][ExtensionHostConnection] <83940> Launched Extension Host Process.
+2023-08-20 16:39:04.206 [info] [<unknown>][eb602636][ManagementConnection] The reconnection short grace time of 5m has expired, so the connection will be disposed.
+2023-08-20 16:39:04.208 [info] [<unknown>][dcc06516][ManagementConnection] The reconnection short grace time of 5m has expired, so the connection will be disposed.
+2023-08-20 16:39:04.373 [info] [<unknown>][0d1090ce][ExtensionHostConnection] <41513> Extension Host Process exited with code: 0, signal: null.
+2023-08-20 16:39:04.430 [info] [<unknown>][6ae317b1][ExtensionHostConnection] <9672> Extension Host Process exited with code: 0, signal: null.
