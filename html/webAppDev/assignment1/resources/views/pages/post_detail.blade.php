@@ -15,8 +15,8 @@
 
 @section('content')
 
-@dump($post)
-@dump($comments)
+<!-- @dump($post)
+@dump($comments) -->
 
 <div class="container">
 <h1>Details</h1>
@@ -28,9 +28,50 @@
 
       <div class="post">
             <p><h3>{{$post->post_title}}</h3></p>
+            <!-- Edit Post Button trigger modal -- add the comment variable to the data target -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPostModal">Edit Post
+            </button>
               <div class="author">{{$post->user_name}}</div>
               <div class="date">{{$post->date}}</div>
             <div class="message">{{$post->message}}</div>
+
+            
+
+            <!-- Modal -->
+            <div class="modal fade" id="editPostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">"{{$post->post_title}}"</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                  <form method="post" action="{{ url('edit_post_action/' . $post->post_id) }}">
+                      {{csrf_field()}}
+                      <p>
+                        <label>Username</label>
+                        {{$post->user_name}}
+                      </p>
+                      <p>
+                        <label>Post Title</label>
+                        <textarea type="text" name="post_title" value="{{$post->post_title}}"></textarea>
+                      </p>
+                      <p>
+                        <label>Post Message</label>
+                        <textarea type="text" name="message" value="{{$post->message}}"></textarea>
+                      </p>
+                        <input type="submit" value="Edit">
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
               <!-- //Like Button ?? CHECK IF here we can Like aswell --> 

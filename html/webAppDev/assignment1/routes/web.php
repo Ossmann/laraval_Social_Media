@@ -129,6 +129,15 @@ Route::get('users', function(){
 });
 
 
+//Route action to edit Post
+Route::post('edit_post_action/{post_id}', function($post_id){
+    $post_title = request('post_title');
+    $message = request('message');
+    update_post($post_title, $message, $post_id);
+    return redirect("/");
+});
+
+
 ///////// FUNCTIONS
 ///// CREATE Functions
 //Create a new user
@@ -240,6 +249,12 @@ function delete_user($user_name) {
 
 /// SPECIAL functions
 //function to count number of comments for a post
+function update_post($post_title, $message, $post_id) {
+    $sql = "update Post set post_title = ?, message = ? where post_id = ?"; 
+    DB::update($sql, array($post_title, $message, $post_id));
+    }
+
+
 function count_comments($posts) {
     foreach ($posts as $post) {
         $sql = "SELECT COUNT(*) as comment_count FROM Comment WHERE post_id=?";
