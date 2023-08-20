@@ -1041,3 +1041,20 @@
 [16:39:04] [<unknown>][dcc06516][ManagementConnection] The reconnection short grace time of 5m has expired, so the connection will be disposed.
 [16:39:04] [<unknown>][0d1090ce][ExtensionHostConnection] <41513> Extension Host Process exited with code: 0, signal: null.
 [16:39:04] [<unknown>][6ae317b1][ExtensionHostConnection] <9672> Extension Host Process exited with code: 0, signal: null.
+[18:58:31] [<unknown>][48042cf5][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+[2023-08-20T10:38:09.182Z] info  code-server 4.13.0 2798322b03e7f446f59c5142215c11711ed7a427
+[2023-08-20T10:38:09.183Z] info  Using user-data-dir ~/.local/share/code-server
+[2023-08-20T10:38:09.202Z] info  Using config file ~/.config/code-server/config.yaml
+[2023-08-20T10:38:09.202Z] info  HTTPS server listening on https://0.0.0.0:8443/
+[2023-08-20T10:38:09.202Z] info    - Authentication is enabled
+[2023-08-20T10:38:09.203Z] info      - Using password from $PASSWORD
+[2023-08-20T10:38:09.203Z] info    - Using certificate for HTTPS: ~/.local/share/code-server/localhost.crt
+[20:38:13] 
+
+
+
+
+[20:38:13] Extension host agent started.
+[20:38:22] [<unknown>][4d434b5b][ManagementConnection] New connection established.
+[20:38:23] [<unknown>][949abed8][ExtensionHostConnection] New connection established.
+[20:38:23] [<unknown>][949abed8][ExtensionHostConnection] <674> Launched Extension Host Process.

@@ -78,11 +78,15 @@ Route::post('create_comment_action', function(){
 });
 
 //Route action to add reply to comments and redirect to Detail Page
-Route::get('create_reply_action/comments', function(){
+Route::post('create_reply_action/{post_id}/{comment_id}', function($post_id, $comment_id){
     $author = request('author');
     $reply_message = request('reply_message');
-    foreach ($comments as $comment) {
-        $comment->replies = get_replies($comment);
+    create_user($author);
+    $id = create_reply($author, $comment_id, $reply_message);
+    if ($id) {
+        return redirect("/post_detail/{$post_id}");
+    } else {
+        die("Error while adding reply.");
     }
 
 });
@@ -155,6 +159,16 @@ function create_comment($author, $comment_message, $post_id){
     $id = DB::getPdo()->lastInsertId();
     return($id);
 }
+
+// function to create a new reply for a comment and add to the DB
+function create_reply($author, $comment_id, $reply_message){ 
+    $sql = "insert into Reply (user_name, comment_id, reply_message, date) values (?, ?, ?, ?)";
+    $current_date = date('Y-m-d');
+    DB::insert($sql, array($author, $comment_id, $reply_message, $current_date));
+    $id = DB::getPdo()->lastInsertId();
+    return($id);
+}
+    
 
 // function to create a new like and add to the DB
 function create_like($author, $post_id){ 
@@ -244,5 +258,3 @@ function count_likes($posts) {
     }
     return $posts;
 }
-
-

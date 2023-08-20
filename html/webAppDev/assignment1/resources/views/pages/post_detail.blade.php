@@ -15,8 +15,8 @@
 
 @section('content')
 
-<!-- @dump($post)
-@dump($comments) -->
+@dump($post)
+@dump($comments)
 
 <div class="container">
 <h1>Details</h1>
@@ -57,13 +57,15 @@
           <!-- Reply Button with bootstrap Modal -->
           <div class="reply">
 
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <!-- Button trigger modal -- add the comment variable to the data target -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ $comment->comment_id }}">
             <i class="bi bi-reply-all-fill"></i>Reply</a>
             </button>
 
+            
+
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal{{ $comment->comment_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -73,6 +75,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
+                  @dump($comment->comment_id)
                   <form method="post" action="{{ url('create_reply_action/' . $comment->post_id . '/' . $comment->comment_id) }}">
                       {{csrf_field()}}
                       <p>
