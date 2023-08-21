@@ -48,27 +48,26 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                  <form method="post" action="{{ url('edit_post_action/' . $post->post_id) }}">
-                      {{csrf_field()}}
-                      <p>
-                        <label>Username</label>
-                        {{$post->user_name}}
-                      </p>
-                      <p>
-                        <label>Post Title</label>
-                        <textarea type="text" name="post_title" value="{{$post->post_title}}"></textarea>
-                      </p>
-                      <p>
-                        <label>Post Message</label>
-                        <textarea type="text" name="message" value="{{$post->message}}"></textarea>
-                      </p>
-                        <input type="submit" value="Edit">
-                    </form>
+                    <form method="post" action="{{ url('edit_post_action/' . $post->post_id) }}">
+                        {{csrf_field()}}
+                        <p>
+                          <label>Username</label>
+                          <div class="blue_text">{{$post->user_name}}</div>{
+                        </p>
+                        <p>
+                          <label>Post Title</label>
+                          <textarea type="text" name="post_title">{{$post->post_title}}</textarea>
+                        </p>
+                        <p>
+                          <label>Post Message</label>
+                          <textarea type="text" name="message">{{$post->message}}</textarea>
+                        </p>
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <input type="submit" value="Save Changes">
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
