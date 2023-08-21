@@ -77,6 +77,7 @@
 
             <!-- Condition either Author form or Like Button with Button to add author -->
             @if ($like_toggle)
+              <div class="form_post">
               <form method="post" action="{{url("create_like_action/{$post->post_id}")}}">
                 {{csrf_field()}}
                   <p>
@@ -84,6 +85,7 @@
                   </p>
                 <input type="submit" value="Like">
               </form>
+              </div>
             @else
               <!-- //Like Button -->
               <div class="like">

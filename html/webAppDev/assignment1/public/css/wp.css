@@ -88,6 +88,16 @@ form {
     margin-left: 100px;
 }
 
+
+.form_post form {
+    margin-top: 32px;
+    margin-left: 4px;
+}
+
+.form_post input[type="submit"] {
+    background-color: #4D6CFA;
+}
+
 input {
     border: 0px;
     box-shadow: inset 0px 6px 12px -1.6px #DE0D92;
