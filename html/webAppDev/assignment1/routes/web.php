@@ -19,7 +19,6 @@ Route::get('/', function(){
     $sql = "select * from Post";
     $posts = DB::select($sql);
     $posts = count_comments($posts);
-    $posts = count_likes($posts);
     return view('pages.post_list')->with([
         'posts' => $posts,
         'success', 'Test the toast',
@@ -30,21 +29,13 @@ Route::get('/', function(){
 Route::get('post_detail/{post_id}', function($post_id){
     $post = get_post($post_id);
     $comments = get_comments($post_id);
+    $post = count_likes($post, $post_id);
+    $like_toggle = false;
     return view('pages.post_detail')->with([
         'post' => $post,
         'comments' => $comments,
+        'like_toggle' => $like_toggle,
     ]);  
-});
-
-//Homepage when Like button is pressed
-Route::get('/like_input', function(){
-    $sql = "select * from Post";
-    $posts = DB::select($sql);
-    $posts = count_comments($posts);
-    $like_toggle = true;
-    return view('pages.post_list')->with([
-        'posts' => $posts,
-    ]);
 });
 
 //Route action to add post and redirect to Home Page
@@ -89,14 +80,34 @@ Route::post('create_reply_action/{post_id}/{comment_id}', function($post_id, $co
 
 });
 
+//Post Detail Page when Like button is pressed to change the toggle
+Route::get('like_input/{post_id}', function($post_id){
+    $post = get_post($post_id);
+    $comments = get_comments($post_id);
+    $post = count_likes($post, $post_id);
+    $like_toggle = true;
+    return view('pages.post_detail')->with([
+        'post' => $post,
+        'comments' => $comments,
+        'like_toggle' => $like_toggle,
+    ]);
+});
+
 //Route action to add like and redirect to Detail Page
-Route::post('create_like_action', function(){
+Route::post('create_like_action/{post_id}', function($post_id){
     $author = request('author');
-    $post_id = request('post_id');
     create_user($author);
+    $post = get_post($post_id);
+    $comments = get_comments($post_id);
+    $post = count_likes($post, $post_id);
+    $like_toggle = false;
     $id = create_like($author, $post_id);
     if ($id) {
-        return redirect("/");
+        return view('pages.post_detail')->with([
+            'post' => $post,
+            'comments' => $comments,
+            'like_toggle' => $like_toggle,
+        ]);
     } else {
         die("Error while adding like.");
     }
@@ -144,13 +155,8 @@ function create_user($author){
     $unique_author = DB::select($sql, [$author]);
 
     if (empty($unique_author)) {
-         if (preg_match('~[0-9]+~', $author)) {
-            $sql2 = "insert into User (user_name) values (?)";
-            DB::insert($sql2, array($author));
-        } else {
-            $error_message = "Error: User must not contain numbers.";
-            return $error_message;
-        }  
+        $sql2 = "insert into User (user_name) values (?)";
+        DB::insert($sql2, array($author));
     } 
     else {
         $error_message = "Error: User already taken.";
@@ -278,12 +284,29 @@ function count_comments($posts) {
     return $posts;
 }
 
-//function to count number of comments for a post
-function count_likes($posts) {
-    foreach ($posts as $post) {
-        $sql = "SELECT COUNT(*) as like_count FROM Like WHERE post_id=?";
-        $like_counter = DB::select($sql, [$post->post_id]);
-        $post->like_counter = $like_counter[0]->like_count; // Access the count value
+// //function to count number of comments for a post
+// function count_likes($post, $post_id) {
+//     $sql = "SELECT COUNT(*) FROM Like WHERE post_id=?";
+//     $like_count = DB::select($sql, [$post_id]);
+//     $post->like_count = $like_count;
+//     return $post;
+// }
+
+
+
+// // Function to count the number of likes for a post
+function count_likes($post, $post_id) {
+    $sql = "SELECT COUNT(*) as like_count FROM Like WHERE post_id=?";
+    
+    // Assuming DB::select() returns an array of objects
+    $like_count_result = DB::select($sql, [$post_id]);
+    
+    if (!empty($like_count_result)) {
+        $post->like_count = $like_count_result[0]->like_count;
+    } else {
+        // Handle case where no likes found
+        $post->like_count = 0;
     }
-    return $posts;
+    
+    return $post;
 }

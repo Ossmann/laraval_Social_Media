@@ -29,8 +29,10 @@
       <div class="post">
             <p><h3>{{$post->post_title}}</h3></p>
             <!-- Edit Post Button trigger modal -- add the comment variable to the data target -->
+            <div id="editPostButton">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPostModal">Edit Post
             </button>
+            </div>
               <div class="author">{{$post->user_name}}</div>
               <div class="date">{{$post->date}}</div>
             <div class="message">{{$post->message}}</div>
@@ -73,17 +75,35 @@
             </div>
 
 
-              <!-- //Like Button ?? CHECK IF here we can Like aswell --> 
+            <!-- Condition either Author form or Like Button with Button to add author -->
+            @if ($like_toggle)
+              <form method="post" action="{{url("create_like_action/{$post->post_id}")}}">
+                {{csrf_field()}}
+                  <p>
+                    <input type="text" name="author" placeholder="Enter user name">
+                  </p>
+                <input type="submit" value="Like">
+              </form>
+            @else
+              <!-- //Like Button -->
               <div class="like">
                 <div class="like_button">
-                <i class="bi bi-hand-thumbs-up-fill"></i>
+                <a class="nav-link" href="{{url("like_input/{$post->post_id}")}}"><i class="bi bi-hand-thumbs-up-fill"></i></a>
                 </div>
-                <!-- Like counter -->
+                {{$post->like_count}}
               </div>
+            @endif
+
       </div>
       @foreach($comments as $comment)
         <div class="comment">
           <div class="commentline">
+            
+            <!-- Button trigger modal -- add the comment variable to the data target -->
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal{{ $comment->comment_id }}">
+            <i class="bi bi-arrow-return-right"></i>Reply</a>
+            </button>
+
             <i class="bi bi-chat-right-text-fill"></i>
             <div class="comment-content">
               <div class="topline">
@@ -93,15 +113,6 @@
               <div class="message">{{$comment->comment_message}}</div>
             </div>
           </div>
-
-          <!-- Reply Button with bootstrap Modal -->
-          <div class="reply">
-
-            <!-- Button trigger modal -- add the comment variable to the data target -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{ $comment->comment_id }}">
-            <i class="bi bi-reply-all-fill"></i>Reply</a>
-            </button>
-
             
 
             <!-- Modal -->
@@ -126,17 +137,16 @@
                         <label>Reply</label>
                         <textarea type="text" name="reply_message"></textarea>
                       </p>
-                        <input type="submit" value="Reply">
-                    </form>
+
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <input type="submit" value="Reply">
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
           
 
         </div>
@@ -154,6 +164,12 @@
             <div class="reply_icon">
               <i class="bi bi-chat-left-text"></i>
             </div>
+
+            <!-- Button trigger modal -- add the comment variable to the data target -->
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal{{ $comment->comment_id }}">
+            Reply<i class="bi bi-arrow-return-left"></i></a>
+            </button>
+
           </div>
         </div>
         @endforeach
@@ -169,7 +185,7 @@
         <!-- form to create a comment -->
           <form method="post" action="{{url("create_comment_action")}}">
             {{csrf_field()}}
-            <p>Comment on Post</p>
+            <p>Comment on this Post</p>
               <!-- send post_id with the form to be able to insert into DB with comment -->
               <input type="hidden" name="post_id" value="{{$post->post_id}}">
               <p>

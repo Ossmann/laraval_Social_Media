@@ -124,6 +124,7 @@ textarea {
     margin-left: 12px;
     clear: both;
     float: right;
+    margin-top: 20px;
 }
 
 .comment .comment-content {
@@ -132,7 +133,7 @@ textarea {
     padding-left: 10px;
     border-color: #DE0D92;
     border-radius: 10px;
-    box-shadow: 4px 4px 4px #DE0D92;
+    box-shadow: 10px 6px 3px #DE0D92;
     margin-top: 8px;
     margin-left: 20px;
     font-size: small;
@@ -157,6 +158,7 @@ textarea {
     display: flex;
     align-items: center;
     clear: both;
+    margin-left: 80px;
 }
 
 .reply .reply-content {
@@ -165,7 +167,7 @@ textarea {
     padding-left: 10px;
     border-color: #4D6CFA;
     border-radius: 10px;
-    box-shadow: -2px 3px 3px #4D6CFA;
+    box-shadow: -8px 5px 3px #4D6CFA;
     margin-top: 8px;
     font-size: small;
     color: black;
@@ -244,6 +246,14 @@ table.bordered td { border: solid; border-width: thin; }
 table.bordered th { border: solid; border-width: thin; border-color: black; }
 .alt {
     background-color: #D7DEFE;
+}
+
+#editPostButton {
+    float:right;
+}
+
+.btn.btn-link{
+    font-size: x-small;
 }
 
 .antispam { display:none;}
