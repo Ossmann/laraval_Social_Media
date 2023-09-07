@@ -30,7 +30,8 @@
                     @if ($loop->index %2 == 0)
             <tr class="alt">
               <td>
-                <div id="user">{{$user->user_name}}
+                <div id="user">
+                  <a href="{{url("user_posts/$user->user_name")}}">{{$user->user_name}}</a>
               </td>
               <td>
                   <!-- //Delete Post Button -->
@@ -45,7 +46,8 @@
             @else
               <tr>
                 <td>
-                  <div id="user">{{$user->user_name}}
+                  <div id="user">
+                    <a href="{{url("user_posts/$user->user_name")}}">{{$user->user_name}}</a>
                 </td>
               <td>
                   <!-- //Delete Post Button -->

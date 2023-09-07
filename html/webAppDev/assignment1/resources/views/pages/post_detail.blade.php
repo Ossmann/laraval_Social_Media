@@ -17,11 +17,11 @@
 
 <!-- Set a variable to create a various levels of comments -->
 @php
-    $previousCommentId = null;
+    $previousCommentId = "start";
 @endphp
 
-@dump($post)
-@dump($comments)
+<!-- @dump($post)
+@dump($comments) -->
 
 <div class="container">
 <h1>Details</h1>
@@ -35,7 +35,7 @@
             <p><h3>{{$post->post_title}}</h3></p>
             <!-- Edit Post Button trigger modal  -->
             <div id="editPostButton">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPostModal">Edit Post
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPostModal">Reply
             </button>
             </div>
               <div class="author">{{$post->user_name}}</div>
@@ -105,12 +105,12 @@
 
       <!-- Display Comments -->
       @foreach($comments as $comment)
-        @if ($comment->comment_parent_id === null)
+        @if ($previousCommentId === "start")
           <div class="comment">
             <div class="commentline">
               
               <!-- Reply to comment modal -- add the comment variable to the data target -->
-              <button type="button" class="btn btn-link" data-toggle="modal" data-target="#replyCommentModal{{ $comment->comment_id }}">Edit Post</button>
+              <button type="button" class="btn btn-link" data-toggle="modal" data-target="#replyCommentModal{{ $comment->comment_id }}">Reply</button>
 
 
               <i class="bi bi-chat-right-text-fill"></i>
@@ -125,15 +125,15 @@
 
             <!-- reassign variable to check comment for parent -->
             @php
-              $previousCommentId = $comment->comment_id;
+              $previousCommentId = $comment->comment_parent_id;
             @endphp
           </div>
 
         @else
           <!-- Check if a comment is subcomment of another -->
           @if ($comment->comment_parent_id === $previousCommentId)
-            <div class="reply">
-              <div class="replyline">
+            <div class="reply_answer">
+              <div class="commentline">
                 <div class="reply-content">
                   <div class="topline">
                     <div class="author">{{$comment->user_name}}</div>
@@ -144,12 +144,14 @@
                 <div class="reply_icon">
                   <i class="bi bi-chat-left-text"></i>
                 </div>
+                <!-- Reply to comment modal -- add the comment variable to the data target -->
+              <button type="button" class="btn btn-link" data-toggle="modal" data-target="#replyCommentModal{{ $comment->comment_id }}">Reply</button>
               </div>
             </div>
 
             <!-- reassign variable to check comment for parent -->
             @php
-              $previousCommentId = $comment->comment_id;
+              $previousCommentId = $comment->comment_parent_id;
             @endphp
           @else
             <!-- Comments that are first level subcomments -->
@@ -170,14 +172,14 @@
           
             <!-- reassign variable to check comment for parent -->
             @php
-              $previousCommentId = $comment->comment_id;
+              $previousCommentId = $comment->comment_parent_id;
             @endphp                            
           @endif
         @endif
 
 
 
-          <!-- Modal -->
+          <!-- Modal to reply to a comment -->
             <div class="modal fade" id="replyCommentModal{{ $comment->comment_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -189,7 +191,7 @@
                   </div>
                   <div class="modal-body">
                   @dump($comment->comment_id)
-                  <form method="post" action="{{ url('create_comment_action/' . $comment->post_id . '/' . $comment->comment_id) }}">
+                    <form method="post" action="{{ url('create_comment_action/' . $comment->post_id) }}">
                       {{csrf_field()}}
                       <p>
                         <label>Your Username</label>
@@ -197,7 +199,7 @@
                       </p>
                       <p>
                         <label>Reply</label>
-                        <textarea type="text" name="reply_message"></textarea>
+                        <textarea type="text" name="comment_message"></textarea>
                       </p>
 
                   </div>

@@ -169,7 +169,7 @@ textarea {
     display: flex;
     align-items: center;
     clear: both;
-    margin-left: 120px;
+    margin-left: 40px;
 }
 
 .reply .reply-content {
@@ -196,6 +196,47 @@ textarea {
 }
 
 .reply_icon {
+    margin-left: 20px;
+}
+
+.reply_answer {
+    font-size: smaller;
+}
+
+.reply_answer .commentline {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+    clear: both;
+    float: right;
+    margin-top: 20px;
+}
+
+
+.reply_answer .reply-content {
+    border: solid 2px;
+    padding: 1px;
+    padding-left: 10px;
+    border-color: #9E1946;
+    border-radius: 10px;
+    box-shadow: 6px 5px 3px #F1A7C0;
+    margin-top: 8px;
+    font-size: small;
+    color: black;
+    background-color: #D7DFFE;
+}
+
+.reply_answer .author {
+        padding: 1px;
+        font-weight: bold;
+        text-decoration: underline;
+}
+
+.reply_answer .message {
+    padding-right: 10px;
+}
+
+.reply_answer .reply_icon {
     margin-left: 20px;
 }
 

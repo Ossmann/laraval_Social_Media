@@ -53,7 +53,20 @@ Route::post('create_post_action', function(){
 });
 
 //Route action to add comment and redirect to Detail Page
-Route::post('create_comment_action', function(){
+Route::post('create_comment_action/{post_id}', function($post_id){
+    $author = request('author');
+    $comment_message = request('comment_message');
+    create_user($author);
+    $id = create_comment($author, $comment_message, $post_id); // need to add DATE
+    if ($id) {
+        return redirect("/post_detail/{$post_id}");
+    } else {
+        die("Error while adding comment.");
+    }
+});
+
+//Route action to add reply and redirect to Detail Page
+Route::post('create_reply_action', function(){
     $author = request('author');
     $comment_message = request('comment_message');
     $post_id = request('post_id');
@@ -120,6 +133,17 @@ Route::get('users', function(){
     $sql = "select * from User";
     $users = DB::select($sql);
     return view('pages.users')->with('users', $users);
+});
+
+//route to display all posts of a user
+Route::get('user_posts/{user_name}', function($user_name){
+    $sql = "SELECT * FROM Post WHERE user_name =?";
+    $posts = DB::select($sql, [$user_name]);
+    $posts = count_comments($posts);
+    return view('pages.users_posts')->with([
+        'posts' => $posts,
+        'user_name' => $user_name,
+    ]);
 });
 
 //Route action to edit Post
