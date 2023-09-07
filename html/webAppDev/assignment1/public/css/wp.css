@@ -53,6 +53,7 @@ body {
     font-style: italic;
     margin-right: 6px;
     margin-left: auto;
+    padding-left: 20px;
 }
 
 .post .author {
@@ -90,7 +91,7 @@ form {
 
 
 .form_post form {
-    margin-top: 32px;
+    margin-top: 32px;    margin-left: 120px;
     margin-left: 4px;
 }
 
@@ -168,7 +169,7 @@ textarea {
     display: flex;
     align-items: center;
     clear: both;
-    margin-left: 80px;
+    margin-left: 120px;
 }
 
 .reply .reply-content {

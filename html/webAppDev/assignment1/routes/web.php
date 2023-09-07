@@ -66,20 +66,6 @@ Route::post('create_comment_action', function(){
     }
 });
 
-//Route action to add reply to comments and redirect to Detail Page
-Route::post('create_reply_action/{post_id}/{comment_id}', function($post_id, $comment_id){
-    $author = request('author');
-    $reply_message = request('reply_message');
-    create_user($author);
-    $id = create_reply($author, $comment_id, $reply_message);
-    if ($id) {
-        return redirect("/post_detail/{$post_id}");
-    } else {
-        die("Error while adding reply.");
-    }
-
-});
-
 //Post Detail Page when Like button is pressed to change the toggle
 Route::get('like_input/{post_id}', function($post_id){
     $post = get_post($post_id);
@@ -123,7 +109,6 @@ Route::get('delete_post/{post_id}', function($post_id){
 //delete user, with all its posts, comments and comment answers and Likes
 Route::get('delete_user/{user_name}', function($user_name){
     delete_likes($user_name);
-    delete_replies($user_name);
     delete_user_comments($user_name);
     delete_post($user_name);
     delete_user($user_name);
@@ -136,7 +121,6 @@ Route::get('users', function(){
     $users = DB::select($sql);
     return view('pages.users')->with('users', $users);
 });
-
 
 //Route action to edit Post
 Route::post('edit_post_action/{post_id}', function($post_id){
@@ -182,15 +166,6 @@ function create_comment($author, $comment_message, $post_id){
     $id = DB::getPdo()->lastInsertId();
     return($id);
 }
-
-// function to create a new reply for a comment and add to the DB
-function create_reply($author, $comment_id, $reply_message){ 
-    $sql = "insert into Reply (user_name, comment_id, reply_message, date) values (?, ?, ?, ?)";
-    $current_date = date('Y-m-d');
-    DB::insert($sql, array($author, $comment_id, $reply_message, $current_date));
-    $id = DB::getPdo()->lastInsertId();
-    return($id);
-}
     
 
 // function to create a new like and add to the DB
@@ -217,29 +192,16 @@ function get_post($post_id) {
 function get_comments($post_id) {
     $sql = "select * from Comment where post_id=?";
     $comments = DB::select($sql, array($post_id));
-    foreach ($comments as $comment) {
-        $comment->replies = get_replies($comment);
-    }
+    // foreach ($comments as $comment) {
+    //     $comment->replies = get_replies($comment);
+    // }
     return $comments;
-}
-
-//function to get comments and replies for a detail post
-function get_replies($comment) {
-    $sql = "select * from Reply where comment_id=?";
-    $replies = DB::select($sql, array($comment->comment_id));
-    return $replies;
 }
 
 //// Delete functions
 //function to delete likes
 function delete_likes($user_name) {
     $sql = "delete from Like where user_name = ?";
-    DB::delete($sql, array($user_name));
-    }
-
-//function to delete replies
-function delete_replies($user_name) {
-    $sql = "delete from Reply where user_name = ?";
     DB::delete($sql, array($user_name));
     }
 

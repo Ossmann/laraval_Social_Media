@@ -35,7 +35,7 @@
   <body>
 
     <nav class="navbar fixed-top navbar-expand-md navbar-dark custom-navbar-color mb-4">
-      <a class="navbar-brand" href="#">Social Media</a>
+      <a class="navbar-brand" href="#">Jakob's Social Media</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

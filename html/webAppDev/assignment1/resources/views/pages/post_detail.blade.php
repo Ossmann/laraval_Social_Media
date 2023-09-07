@@ -15,8 +15,13 @@
 
 @section('content')
 
-<!-- @dump($post)
-@dump($comments) -->
+<!-- Set a variable to create a various levels of comments -->
+@php
+    $previousCommentId = null;
+@endphp
+
+@dump($post)
+@dump($comments)
 
 <div class="container">
 <h1>Details</h1>
@@ -28,7 +33,7 @@
 
       <div class="post">
             <p><h3>{{$post->post_title}}</h3></p>
-            <!-- Edit Post Button trigger modal -- add the comment variable to the data target -->
+            <!-- Edit Post Button trigger modal  -->
             <div id="editPostButton">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPostModal">Edit Post
             </button>
@@ -39,7 +44,7 @@
 
             
 
-            <!-- Modal -->
+            <!-- Modal to edit a Post -->
             <div class="modal fade" id="editPostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -72,7 +77,7 @@
                   </form>
                 </div>
               </div>
-            </div>
+          </div>
 
 
             <!-- Condition either Author form or Like Button with Button to add author -->
@@ -97,28 +102,83 @@
             @endif
 
       </div>
+
+      <!-- Display Comments -->
       @foreach($comments as $comment)
-        <div class="comment">
-          <div class="commentline">
-            
-            <!-- Button trigger modal -- add the comment variable to the data target -->
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal{{ $comment->comment_id }}">
-            <i class="bi bi-arrow-return-right"></i>Reply</a>
-            </button>
+        @if ($comment->comment_parent_id === null)
+          <div class="comment">
+            <div class="commentline">
+              
+              <!-- Reply to comment modal -- add the comment variable to the data target -->
+              <button type="button" class="btn btn-link" data-toggle="modal" data-target="#replyCommentModal{{ $comment->comment_id }}">Edit Post</button>
 
-            <i class="bi bi-chat-right-text-fill"></i>
-            <div class="comment-content">
-              <div class="topline">
-                <div class="author">{{$comment->user_name}}</div>
-                <div class="date">{{$comment->date}}</div>
+
+              <i class="bi bi-chat-right-text-fill"></i>
+              <div class="comment-content">
+                <div class="topline">
+                  <div class="author">{{$comment->user_name}}</div>
+                  <div class="date">{{$comment->date}}</div>
+                </div>
+                <div class="message">{{$comment->comment_message}}</div>
               </div>
-              <div class="message">{{$comment->comment_message}}</div>
             </div>
-          </div>
-            
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal{{ $comment->comment_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- reassign variable to check comment for parent -->
+            @php
+              $previousCommentId = $comment->comment_id;
+            @endphp
+          </div>
+
+        @else
+          <!-- Check if a comment is subcomment of another -->
+          @if ($comment->comment_parent_id === $previousCommentId)
+            <div class="reply">
+              <div class="replyline">
+                <div class="reply-content">
+                  <div class="topline">
+                    <div class="author">{{$comment->user_name}}</div>
+                    <div class="date">{{$comment->date}}</div>
+                  </div>
+                  <div class="message">{{$comment->comment_message}}</div>
+                </div>
+                <div class="reply_icon">
+                  <i class="bi bi-chat-left-text"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- reassign variable to check comment for parent -->
+            @php
+              $previousCommentId = $comment->comment_id;
+            @endphp
+          @else
+            <!-- Comments that are first level subcomments -->
+            <div class="reply">
+              <div class="replyline">
+                <div class="reply-content">
+                  <div class="topline">
+                    <div class="author">{{$comment->user_name}}</div>
+                    <div class="date">{{$comment->date}}</div>
+                  </div>
+                  <div class="message">{{$comment->comment_message}}</div>
+                </div>
+                <div class="reply_icon">
+                  <i class="bi bi-chat-left-text"></i>
+                </div>
+              </div>
+            </div>
+          
+            <!-- reassign variable to check comment for parent -->
+            @php
+              $previousCommentId = $comment->comment_id;
+            @endphp                            
+          @endif
+        @endif
+
+
+
+          <!-- Modal -->
+            <div class="modal fade" id="replyCommentModal{{ $comment->comment_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -129,7 +189,7 @@
                   </div>
                   <div class="modal-body">
                   @dump($comment->comment_id)
-                  <form method="post" action="{{ url('create_reply_action/' . $comment->post_id . '/' . $comment->comment_id) }}">
+                  <form method="post" action="{{ url('create_comment_action/' . $comment->post_id . '/' . $comment->comment_id) }}">
                       {{csrf_field()}}
                       <p>
                         <label>Your Username</label>
@@ -149,36 +209,10 @@
                 </div>
               </div>
             </div>
-          
 
-        </div>
+      @endforeach
 
-        @foreach($comment->replies as $reply)
-        <div class="reply">
-          <div class="replyline">
-            <div class="reply-content">
-              <div class="topline">
-                <div class="author">{{$reply->user_name}}</div>
-                <div class="date">{{$reply->date}}</div>
-              </div>
-              <div class="message">{{$reply->reply_message}}</div>
-            </div>
-            <div class="reply_icon">
-              <i class="bi bi-chat-left-text"></i>
-            </div>
-
-            <!-- Button trigger modal -- add the comment variable to the data target -->
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal{{ $comment->comment_id }}">
-            Reply<i class="bi bi-arrow-return-left"></i></a>
-            </button>
-
-          </div>
-        </div>
-        @endforeach
-
-        @endforeach
-
-
+      <!-- Div ends left column -->
     </div>
     
         <!-- right column -->
@@ -203,7 +237,7 @@
         </div>
   </div>
 
-  <a href="{{url("/")}}">Back</a>
+  <a href="{{url("/")}}"><i class="bi bi-arrow-left-square-fill"></i> Back</a>
 </div><!-- /.container -->
 
 
