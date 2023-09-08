@@ -50,7 +50,8 @@
           No post found
   @endif
 
-
+        <a href="{{url("users")}}"><i class="bi bi-arrow-left-square-fill"></i> Back</a>
       </div>
+
 </div>
   @endsection

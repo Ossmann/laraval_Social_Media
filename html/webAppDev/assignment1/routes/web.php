@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,7 @@ Route::get('post_detail/{post_id}', function($post_id){
     ]);  
 });
 
-//Route action to add post and redirect to Home Page
+//Route action to add post and redirect to Home Page and put new username into session via controller
 Route::post('create_post_action', function(){
     $post_title = request('post_title');
     $author = request('author');
@@ -46,6 +47,7 @@ Route::post('create_post_action', function(){
     create_user($author);
     $id = create_post($post_title, $author, $message);
     if ($id) {
+        app(UserAuth::class)->userSession($author);
         return redirect("/");
     } else {
         die("Error while adding post.");
@@ -53,12 +55,14 @@ Route::post('create_post_action', function(){
 });
 
 //Route action to add comment and redirect to Detail Page
-Route::post('create_comment_action/{post_id}', function($post_id){
+Route::post('create_comment_action', function(){
+    $post_id = request('post_id');
     $author = request('author');
     $comment_message = request('comment_message');
     create_user($author);
     $id = create_comment($author, $comment_message, $post_id); // need to add DATE
     if ($id) {
+        app(UserAuth::class)->userSession($author);
         return redirect("/post_detail/{$post_id}");
     } else {
         die("Error while adding comment.");

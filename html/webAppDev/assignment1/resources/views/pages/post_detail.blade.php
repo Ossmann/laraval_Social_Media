@@ -20,6 +20,8 @@
     $previousCommentId = "start";
 @endphp
 
+{{session('user_name')}}
+
 <!-- @dump($post)
 @dump($comments) -->
 
@@ -35,7 +37,7 @@
             <p><h3>{{$post->post_title}}</h3></p>
             <!-- Edit Post Button trigger modal  -->
             <div id="editPostButton">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPostModal">Reply
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editPostModal">Edit
             </button>
             </div>
               <div class="author">{{$post->user_name}}</div>
@@ -62,11 +64,11 @@
                           <div class="blue_text">{{$post->user_name}}</div>{
                         </p>
                         <p>
-                          <label>Post Title</label>
+                          <label>Edit Post Title</label>
                           <textarea type="text" name="post_title">{{$post->post_title}}</textarea>
                         </p>
                         <p>
-                          <label>Post Message</label>
+                          <label>Edit Post Message</label>
                           <textarea type="text" name="message">{{$post->message}}</textarea>
                         </p>
                   </div>
@@ -191,8 +193,10 @@
                   </div>
                   <div class="modal-body">
                   @dump($comment->comment_id)
-                    <form method="post" action="{{ url('create_comment_action/' . $comment->post_id) }}">
+                    <form method="post" action="{{ url('create_comment_action/') }}">
                       {{csrf_field()}}
+                      <!-- send post_id with the form to be able to insert into DB with comment -->
+                      <input type="hidden" name="post_id" value="{{$post->post_id}}">
                       <p>
                         <label>Your Username</label>
                         <input type="text" name="author">
