@@ -30,7 +30,7 @@ Route::get('/', function(){
 Route::get('post_detail/{post_id}', function($post_id){
     $post = get_post($post_id);
     $comments = get_comments($post_id);
-    $post = count_likes($post, $post_id);
+    $post = count_likes($post);
     $like_toggle = false;
     return view('pages.post_detail')->with([
         'post' => $post,
@@ -87,7 +87,7 @@ Route::post('create_reply_action', function(){
 Route::get('like_input/{post_id}', function($post_id){
     $post = get_post($post_id);
     $comments = get_comments($post_id);
-    $post = count_likes($post, $post_id);
+    $post = count_likes($post);
     $like_toggle = true;
     return view('pages.post_detail')->with([
         'post' => $post,
@@ -102,18 +102,14 @@ Route::post('create_like_action/{post_id}', function($post_id){
     create_user($author);
     $post = get_post($post_id);
     $comments = get_comments($post_id);
-    $post = count_likes($post, $post_id);
+    $post = count_likes_button($author, $post, $post_id);
+    app(UserAuth::class)->userSession($author);
     $like_toggle = false;
-    $id = create_like($author, $post_id);
-    if ($id) {
-        return view('pages.post_detail')->with([
-            'post' => $post,
-            'comments' => $comments,
-            'like_toggle' => $like_toggle,
-        ]);
-    } else {
-        die("Error while adding like.");
-    }
+    return view('pages.post_detail')->with([
+        'post' => $post,
+        'comments' => $comments,
+        'like_toggle' => $like_toggle,
+    ]);
 });
 
 //add the route to delete post
@@ -200,9 +196,9 @@ function create_comment($author, $comment_message, $post_id){
 function create_like($author, $post_id){ 
     $sql = "insert into Like (user_name, post_id) values (?, ?)";
     DB::insert($sql, array($author, $post_id));
-    $id = DB::getPdo()->lastInsertId();
-    return($id);
+        
 }
+
 
 ///// GET Functions
 //function to get posts
@@ -264,7 +260,7 @@ function update_post($post_title, $message, $post_id) {
     DB::update($sql, array($post_title, $message, $post_id));
     }
 
-
+// function to count number of comments for a post
 function count_comments($posts) {
     foreach ($posts as $post) {
         $sql = "SELECT COUNT(*) as comment_count FROM Comment WHERE post_id=?";
@@ -274,29 +270,30 @@ function count_comments($posts) {
     return $posts;
 }
 
-// //function to count number of comments for a post
-// function count_likes($post, $post_id) {
-//     $sql = "SELECT COUNT(*) FROM Like WHERE post_id=?";
-//     $like_count = DB::select($sql, [$post_id]);
-//     $post->like_count = $like_count;
-//     return $post;
-// }
+// // Function to count the number of likes once detail page is loaded
+function count_likes($post) {
 
-
-
-// // Function to count the number of likes for a post
-function count_likes($post, $post_id) {
     $sql = "SELECT COUNT(*) as like_count FROM Like WHERE post_id=?";
+    $like_counter = DB::select($sql, [$post->post_id]);
+    $post->like_count = $like_counter[0]->like_count; // Access the count value
+    return $post;
+}
+
+
+// // // Function to count the number of likes for a post after like is pressed
+function count_likes_button($author, $post, $post_id) {
+    $sql = "SELECT * FROM `Like` WHERE post_id = ? AND user_name = ?";
     
-    // Assuming DB::select() returns an array of objects
-    $like_count_result = DB::select($sql, [$post_id]);
+    $like_check = DB::select($sql, [$post_id, $author]);
     
-    if (!empty($like_count_result)) {
-        $post->like_count = $like_count_result[0]->like_count;
-    } else {
-        // Handle case where no likes found
-        $post->like_count = 0;
+    if (empty($like_check)) {
+        create_like($author, $post_id);
+
     }
+
+    $sql2 = "SELECT COUNT(*) as like_count FROM Like WHERE post_id=?";
+    $like_counter = DB::select($sql2, [$post_id]);
+    $post->like_count = $like_counter[0]->like_count; 
     
     return $post;
 }

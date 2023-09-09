@@ -73,7 +73,11 @@
               </p>
               <p>
                 <label>Author</label>
-                <input type="text" name="author">
+                @if (session('user_name'))
+                  {{session('user_name')}}
+                @else
+                  <input type="text" name="author">
+                @endif
               </p>
               <p>
                 <label>Message</label>

@@ -87,10 +87,15 @@
               <div class="form_post">
               <form method="post" action="{{url("create_like_action/{$post->post_id}")}}">
                 {{csrf_field()}}
-                  <p>
+                <p>
+                  @if (session('user_name'))
+                    {{session('user_name')}}
+                    <input type="hidden" name="author" value="{{session('user_name')}}">
+                  @else
                     <input type="text" name="author" placeholder="Enter user name">
-                  </p>
-                <input type="submit" value="Like">
+                  @endif
+                </p>
+                <input type="submit" value="Submit Like">
               </form>
               </div>
             @else
@@ -227,12 +232,16 @@
         <!-- form to create a comment -->
           <form method="post" action="{{url("create_comment_action")}}">
             {{csrf_field()}}
-            <p>Comment on this Post</p>
+            <h3>Comment on this Post</h3>
               <!-- send post_id with the form to be able to insert into DB with comment -->
               <input type="hidden" name="post_id" value="{{$post->post_id}}">
               <p>
                 <label>Author</label>
-                <input type="text" name="author">
+                @if (session('user_name'))
+                  {{session('user_name')}}
+                @else
+                  <input type="text" name="author">
+                @endif
               </p>
               <p>
                 <label>Message</label>
