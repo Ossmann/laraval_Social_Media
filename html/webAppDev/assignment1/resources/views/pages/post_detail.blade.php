@@ -15,13 +15,6 @@
 
 @section('content')
 
-<!-- Set a variable to create a various levels of comments -->
-@php
-    $previousCommentId = "start";
-@endphp
-
-{{ session('liked_blocked') === false ? 'false' : 'true'}}
-
 <!-- @dump($post)
 @dump($comments) -->
 
@@ -82,7 +75,7 @@
           </div>
 
 
-            <!-- Condition either show Author form to input name of Liker or Like Button -->
+            <!-- Condition either show Author form to input name of Person who liked or Like Button -->
             @if ($like_toggle)
               <div class="form_post">
               <form method="post" action="{{url("create_like_action/{$post->post_id}")}}">
@@ -119,82 +112,73 @@
       </div>
 
       <!-- Display Comments -->
-      @foreach($comments as $comment)
-        @if ($previousCommentId === "start")
-          <div class="comment">
-            <div class="commentline">
-              
-              <!-- Reply to comment modal -- add the comment variable to the data target -->
-              <button type="button" class="btn btn-link" data-toggle="modal" data-target="#replyCommentModal{{ $comment->comment_id }}">Reply</button>
+        @foreach($comments as $comment)
+            @if ($comment->comment_parent_id === null)
+              <div class="comment">
+                <div class="commentline">
+                  
+                  <!-- Reply to comment modal -- add the comment variable to the data target -->
+                  <button type="button" class="btn btn-link" data-toggle="modal" data-target="#replyCommentModal{{ $comment->comment_id }}">Reply</button>
 
 
-              <i class="bi bi-chat-right-text-fill"></i>
-              <div class="comment-content">
-                <div class="topline">
-                  <div class="author">{{$comment->user_name}}</div>
-                  <div class="date">{{$comment->date}}</div>
-                </div>
-                <div class="message">{{$comment->comment_message}}</div>
-              </div>
-            </div>
-
-            <!-- reassign variable to check comment for parent -->
-            @php
-              $previousCommentId = $comment->comment_parent_id;
-            @endphp
-          </div>
-
-        @else
-          <!-- Check if a comment is subcomment of another -->
-          @if ($comment->comment_parent_id === $previousCommentId)
-            <div class="reply_answer">
-              <div class="commentline">
-                <div class="reply-content">
-                  <div class="topline">
-                    <div class="author">{{$comment->user_name}}</div>
-                    <div class="date">{{$comment->date}}</div>
+                  <i class="bi bi-chat-right-text-fill"></i>
+                  <div class="comment-content">
+                    <div class="topline">
+                      <div class="author">{{$comment->user_name}}</div>
+                      <div class="date">{{$comment->date}}</div>
+                    </div>
+                    <div class="message">{{$comment->comment_message}}</div>
                   </div>
-                  <div class="message">{{$comment->comment_message}}</div>
-                </div>
-                <div class="reply_icon">
-                  <i class="bi bi-chat-left-text"></i>
-                </div>
-                <!-- Reply to comment modal -- add the comment variable to the data target -->
-              <button type="button" class="btn btn-link" data-toggle="modal" data-target="#replyCommentModal{{ $comment->comment_id }}">Reply</button>
-              </div>
-            </div>
-
-            <!-- reassign variable to check comment for parent -->
-            @php
-              $previousCommentId = $comment->comment_parent_id;
-            @endphp
-          @else
-            <!-- Comments that are first level subcomments -->
-            <div class="reply">
-              <div class="replyline">
-                <div class="reply-content">
-                  <div class="topline">
-                    <div class="author">{{$comment->user_name}}</div>
-                    <div class="date">{{$comment->date}}</div>
-                  </div>
-                  <div class="message">{{$comment->comment_message}}</div>
-                </div>
-                <div class="reply_icon">
-                  <i class="bi bi-chat-left-text"></i>
                 </div>
               </div>
-            </div>
-          
-            <!-- reassign variable to check comment for parent -->
-            @php
-              $previousCommentId = $comment->comment_parent_id;
-            @endphp                            
-          @endif
-        @endif
+                    
+                    @foreach($comments as $reply)
+                        @if ($reply->comment_parent_id === $comment->comment_id)
+                            <div class="reply">
+                                <!-- Comments that are first level subcomments -->
+                                <div class="reply">
+                                  <div class="replyline">
+                                    <div class="reply-content">
+                                      <div class="topline">
+                                        <div class="author">{{$reply->user_name}}</div>
+                                        <div class="date">{{$reply->date}}</div>
+                                      </div>
+                                      <div class="message">{{$reply->comment_message}}</div>
+                                    </div>
+                                    <div class="reply_icon">
+                                      <i class="bi bi-chat-left-text"></i>
+                                    </div>
+                                    <!-- Reply to comment modal -- add the comment variable to the data target -->
+                                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#replyCommentModal{{ $reply->comment_id }}">Reply</button>
+                                  </div>
+                                </div>
+                      
+                                @foreach($comments as $nestedReply)
+                                    @if ($nestedReply->comment_parent_id === $reply->comment_id)
+                                    <div class="reply_answer">
+                                      <div class="nestedReplyLine">
+                                        <div class="reply_icon">
+                                          <i class="bi bi-three-dots"></i>
+                                        </div>
+                                        <div class="reply-content">
+                                          <div class="topline">
+                                            <div class="author">{{$nestedReply->user_name}}</div>
+                                            <div class="date">{{$nestedReply->date}}</div>
+                                          </div>
+                                          <div class="message">{{$nestedReply->comment_message}}</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        @endif
+                    @endforeach
+            @endif
 
 
 
-          <!-- Modal to reply to a comment -->
+            <!-- Modal to reply to a comment -->
             <div class="modal fade" id="replyCommentModal{{ $comment->comment_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -208,11 +192,16 @@
                   @dump($comment->comment_id)
                     <form method="post" action="{{ url('create_comment_action/') }}">
                       {{csrf_field()}}
-                      <!-- send post_id with the form to be able to insert into DB with comment -->
+                      <!-- send post_id and parent_comment_id with the form to be able to insert into DB with comment -->
                       <input type="hidden" name="post_id" value="{{$post->post_id}}">
+                      <input type="hidden" name="commentID" value="{{$comment->comment_id}}">
                       <p>
                         <label>Your Username</label>
-                        <input type="text" name="author">
+                        @if (session('user_name'))
+                          {{session('user_name')}}
+                        @else
+                          <input type="text" name="author">
+                        @endif
                       </p>
                       <p>
                         <label>Reply</label>
@@ -228,8 +217,8 @@
                 </div>
               </div>
             </div>
+        @endforeach
 
-      @endforeach
 
       <!-- Div ends left column -->
     </div>
@@ -262,7 +251,5 @@
 
   <a href="{{url("/")}}"><i class="bi bi-arrow-left-square-fill"></i> Back</a>
 </div><!-- /.container -->
-
-
 
 @endsection

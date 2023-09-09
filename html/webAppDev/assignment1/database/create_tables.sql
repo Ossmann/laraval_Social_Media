@@ -48,7 +48,8 @@ create table Comment (
     FOREIGN KEY (post_id) REFERENCES Post (post_id)
 );
 
-insert into Comment values (1, null, "Marco Arnautovic", 1, "Thanks for pointing it out brother", '2023-01-12');
+insert into Comment values (1, null, "Marco Arnautovic", 1, "Thanks for pointing it out brother", '2012-01-12');
 insert into Comment values (2, null, "David Alaba", 2, "What a great goal my friend", '2023-01-12');
-insert into Comment values (3, 1, "David Alaba", 1, "Always my friend.", '2023-01-12');
+insert into Comment values (3, 1, "David Alaba", 1, "Always my friend.", '2020-01-12');
+insert into Comment values (5, 3, "Neymar", 1, "Next time I will join.", '2023-01-12');
 insert into Comment values (4, 2, "Marco Arnautovic", 2, "Thanks. I can teach you how to do it.", '2023-01-12');

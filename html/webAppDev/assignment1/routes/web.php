@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuth;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +29,7 @@ Route::get('/', function(){
 
 // go to the detail view of a Post
 Route::get('post_detail/{post_id}', function($post_id){
+    //call controllers to deactivate likeButton
     app(UserAuth::class)->likeBlocked(false);
     $post = get_post($post_id);
     $comments = get_comments($post_id);
@@ -60,8 +62,9 @@ Route::post('create_comment_action', function(){
     $post_id = request('post_id');
     $author = request('author');
     $comment_message = request('comment_message');
+    $comment_id = request('commentID');
     create_user($author);
-    $id = create_comment($author, $comment_message, $post_id); // need to add DATE
+    $id = create_comment($author, $comment_message, $post_id, $comment_id);
     if ($id) {
         app(UserAuth::class)->userSession($author);
         return redirect("/post_detail/{$post_id}");
@@ -75,8 +78,9 @@ Route::post('create_reply_action', function(){
     $author = request('author');
     $comment_message = request('comment_message');
     $post_id = request('post_id');
+    $comment_id = request('comment_id');
     create_user($author);
-    $id = create_comment($author, $comment_message, $post_id); // need to add DATE
+    $id = create_comment($author, $comment_message, $post_id, $comment_id); 
     if ($id) {
         return redirect("/post_detail/{$post_id}");
     } else {
@@ -185,10 +189,10 @@ function create_post($post_title, $author, $message){
 }
 
 // function to create a new comment and add to the DB
-function create_comment($author, $comment_message, $post_id){ 
-    $sql = "insert into Comment (user_name, comment_message, post_id, date) values (?, ?, ?, ?)";
+function create_comment($author, $comment_message, $post_id, $comment_id){ 
+    $sql = "insert into Comment (user_name, comment_message, post_id, comment_parent_id, date) values (?, ?, ?, ?, ?)";
     $current_date = date('Y-m-d');
-    DB::insert($sql, array($author, $comment_message, $post_id, $current_date));
+    DB::insert($sql, array($author, $comment_message, $post_id, $comment_id, $current_date));
     $id = DB::getPdo()->lastInsertId();
     return($id);
 }
@@ -216,11 +220,11 @@ function get_post($post_id) {
 
 //function to get comments and replies for a detail post
 function get_comments($post_id) {
-    $sql = "select * from Comment where post_id=?";
-    $comments = DB::select($sql, array($post_id));
-    // foreach ($comments as $comment) {
-    //     $comment->replies = get_replies($comment);
-    // }
+    $comments = DB::table('Comment')
+        ->where('post_id', $post_id)
+        ->orderBy('comment_parent_id') // You can add more ordering criteria here
+        ->get();
+
     return $comments;
 }
 
@@ -282,7 +286,7 @@ function count_likes($post) {
 }
 
 
-// // // Function to count the number of likes for a post after like is pressed
+//Function to count the number of likes for a post after like is pressed
 function count_likes_button($author, $post, $post_id) {
     $sql = "SELECT * FROM `Like` WHERE post_id = ? AND user_name = ?";
     
