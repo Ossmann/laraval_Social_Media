@@ -24,4 +24,11 @@ class UserAuth extends Controller
         // store username in the session
         session()->put('user_name', $user_name);
     }
+
+
+function likeBlocked($value)
+    {
+        // set variable that this user allready liked to deactivate Like button
+        session()->put('liked_blocked', $value);
+    }
 }

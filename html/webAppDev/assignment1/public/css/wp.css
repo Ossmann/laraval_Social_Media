@@ -260,6 +260,22 @@ textarea {
     box-shadow: 6px 2px 6px white;
 }
 
+.like_button_disabled {
+    width: 36px; 
+    height: 36px;
+    background-color: white;
+    border-radius: 50%; 
+    border: 2px solid white;
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center;
+    color: #710627;
+    font-size: larger;
+    float: left;
+    margin-top: 8px;
+    box-shadow: 6px 2px 6px #710627;
+}
+
 .like_button:hover {
     width: 40px; 
     height: 40px;

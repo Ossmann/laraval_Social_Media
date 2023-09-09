@@ -28,6 +28,7 @@ Route::get('/', function(){
 
 // go to the detail view of a Post
 Route::get('post_detail/{post_id}', function($post_id){
+    app(UserAuth::class)->likeBlocked(false);
     $post = get_post($post_id);
     $comments = get_comments($post_id);
     $post = count_likes($post);
@@ -103,6 +104,7 @@ Route::post('create_like_action/{post_id}', function($post_id){
     $post = get_post($post_id);
     $comments = get_comments($post_id);
     $post = count_likes_button($author, $post, $post_id);
+    //call the session function to save the username entered
     app(UserAuth::class)->userSession($author);
     $like_toggle = false;
     return view('pages.post_detail')->with([
@@ -293,7 +295,10 @@ function count_likes_button($author, $post, $post_id) {
 
     $sql2 = "SELECT COUNT(*) as like_count FROM Like WHERE post_id=?";
     $like_counter = DB::select($sql2, [$post_id]);
-    $post->like_count = $like_counter[0]->like_count; 
+    $post->like_count = $like_counter[0]->like_count;
+
+    //call the session variable to Block the Like Button 
+    app(UserAuth::class)->likeBlocked(true);
     
     return $post;
 }

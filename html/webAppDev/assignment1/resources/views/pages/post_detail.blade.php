@@ -20,7 +20,7 @@
     $previousCommentId = "start";
 @endphp
 
-{{session('user_name')}}
+{{ session('liked_blocked') === false ? 'false' : 'true'}}
 
 <!-- @dump($post)
 @dump($comments) -->
@@ -82,7 +82,7 @@
           </div>
 
 
-            <!-- Condition either Author form or Like Button with Button to add author -->
+            <!-- Condition either show Author form to input name of Liker or Like Button -->
             @if ($like_toggle)
               <div class="form_post">
               <form method="post" action="{{url("create_like_action/{$post->post_id}")}}">
@@ -100,12 +100,20 @@
               </div>
             @else
               <!-- //Like Button -->
-              <div class="like">
-                <div class="like_button">
-                <a class="nav-link" href="{{url("like_input/{$post->post_id}")}}"><i class="bi bi-hand-thumbs-up-fill"></i></a>
+                <div class="like">
+                <!-- Normal or Disabled Button if User allready Liked -->
+                @if(session('liked_blocked'))
+                  <div class="like_button_disabled">
+                    <i class="bi bi-hand-thumbs-up-fill"></i>
+                  </div>
+                @else
+                  <div class="like_button">
+                    <a class="nav-link" href="{{url("like_input/{$post->post_id}")}}"><i class="bi bi-hand-thumbs-up-fill"></i></a>
+                  </div>
+                @endif
+
+                  {{$post->like_count}}
                 </div>
-                {{$post->like_count}}
-              </div>
             @endif
 
       </div>
