@@ -18,8 +18,12 @@ create table Post (
     FOREIGN KEY (user_name) REFERENCES User(user_name)
 );
 
-insert into Post values (1, "Good Goal", "David Alaba", "My team mate Marco scored a fantastic goal this week. Check it out", '2023-01-12');
-insert into Post values (2, "I am the best", "Marco Arnautovic", "Everyone doubted me, but I scored another belter this weekend.", '2023-01-12');
+insert into Post values (1, "Good Goal", "David Alaba", "My team mate Marco scored a fantastic goal this week. Check it out", '2023-01-14');
+insert into Post values (2, "I am the best", "Marco Arnautovic", "Everyone doubted me, but I scored another belter this weekend.", '2022-01-22');
+insert into Post values (3, "Watch my game tomorrow", "Neymar", "Finally the day is here. Tomorrow I will play my very first pro game.", '2012-07-24');
+insert into Post values (4, "Good Assist", "David Alaba", "Today I had a great assist", '2023-09-14');
+
+
 
 drop table if exists Like;
 create table Like (
