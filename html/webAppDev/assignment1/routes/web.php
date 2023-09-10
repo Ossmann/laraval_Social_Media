@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuth;
+use App\Http\Controllers\Validation;
 
 
 /*
@@ -42,20 +43,8 @@ Route::get('post_detail/{post_id}', function($post_id){
     ]);  
 });
 
-//Route action to add post and redirect to Home Page and put new username into session via controller
-Route::post('create_post_action', function(){
-    $post_title = request('post_title');
-    $author = request('author');
-    $message = request('message');
-    create_user($author);
-    $id = create_post($post_title, $author, $message);
-    if ($id) {
-        app(UserAuth::class)->userSession($author);
-        return redirect("/");
-    } else {
-        die("Error while adding post.");
-    }
-});
+//Route to evaluate createPost Form and create a post
+Route::post('create_post_action', [Validation::class, 'validatePost'])->name('create_post_action');
 
 //Route action to add comment and redirect to Detail Page
 Route::post('create_comment_action', function(){
@@ -177,15 +166,6 @@ function create_user($author){
         return $error_message;
     }
 
-}
-
-// function to create a new post and add to the DB
-function create_post($post_title, $author, $message){
-    $sql = "insert into Post (post_title, user_name, message, date) values (?, ?, ?, ?)";
-    $current_date = date('Y-m-d');
-    DB::insert($sql, array($post_title, $author, $message, $current_date));
-    $id = DB::getPdo()->lastInsertId();
-    return($id);
 }
 
 // function to create a new comment and add to the DB

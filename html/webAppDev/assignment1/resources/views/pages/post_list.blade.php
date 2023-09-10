@@ -21,6 +21,17 @@
 <div class="container">
 <!-- @dump($posts) -->
 <h1>Home Page - List of Posts</h1>
+<div class="validation_error">
+    @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
+</div>
 
   <div class = "row" id="content">
 
@@ -65,7 +76,7 @@
         <div class="col-sm-6">
 
         <!-- form to create post -->
-          <form method="post" action="{{url("create_post_action")}}">
+          <form name="create_post_form" method="post" action="{{url("create_post_action")}}" onsubmit="return validateForm()">
             {{csrf_field()}}
               <p>
                 <label>Post Title</label>
@@ -88,4 +99,38 @@
         </div>
   </div>
 </div><!-- /.container -->
+
+
+
+<!-- script for Task2 Validation
+  <script>
+    function validateForm() {
+        let title = document.forms["create_post_form"]["post_title"].value;
+        let author = document.forms["create_post_form"]["author"].value;
+        let message = document.forms["create_post_form"]["message"].value;
+        const wordsInMessage = message.split(' ').filter(word => word.length > 0);
+
+        if (title == "") {
+          alert("Title must be filled out");
+          return false;
+        } else if (title.length < 3) {
+          alert("Title must have at least 3 characters");
+          return false;
+        } else if (author == "") {
+          alert("Author must be filled out");
+          return false;
+        } else if (author.match(/\d/)) {
+          alert("Author must not contain numeric characters.");
+          return false;
+        } else if (message == "") {
+          alert("Message must be filled out");
+          return false;
+        } else if (wordsInMessage.length < 5) {
+          alert("Message must have it least 5 words.");
+          return false;
+        }
+      }
+
+  </script> -->
+
   @endsection

@@ -227,7 +227,7 @@
         <div class="col-sm-6">
 
         <!-- form to create a comment -->
-          <form method="post" action="{{url("create_comment_action")}}">
+          <form name="create_comment_form" method="post" action="{{url("create_comment_action")}}">
             {{csrf_field()}}
             <h3>Comment on this Post</h3>
               <!-- send post_id with the form to be able to insert into DB with comment -->
