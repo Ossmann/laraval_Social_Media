@@ -6,7 +6,8 @@
 <h1>HomePage - List of Industry Partners</h1>
 <ul>
     @foreach ($partners as $partner)
-        <a href="/partner/{{$partner->id}}"><li>{{$partner->inp_name}}</li></a>
+        <a href="partner/{{$partner->id}}"><li>{{$partner->inp_name}}</li></a>
+
     @endforeach
 </ul>
 

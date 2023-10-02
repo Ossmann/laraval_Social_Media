@@ -21,7 +21,7 @@ class PartnerController extends Controller
     public function index()
     {
         $partners = Partner::all();
-        return view('views.index')->with('partners', $partners);
+        return view('pages.index')->with('partners', $partners);
     }
 
     /**
@@ -67,8 +67,12 @@ class PartnerController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        return view('products.show')->with('product', $product);
+        $partner = Partner::find($id);
+        $projects = $partner->projects;
+        return view('pages.details')->with([
+            'product' => $product,
+            'projects' => $projects
+        ]);
     }
 
     /**

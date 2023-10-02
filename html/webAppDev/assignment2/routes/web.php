@@ -20,22 +20,8 @@ use App\Models\Project;
 //Load HomePage and check Login via the PartnerController
 Route::get('/', [PartnerController::class, 'index']);
 
-Route::get('/project_list', [ProjectsController::class, 'index']);
+Route::resource('partner', PartnerController::class);
 
-//Details Page of Industry Partner, fetch all projects of the Partner
-Route::get('partner/{id}', function($id){ //replace partnername with id??
-    $partner = Partner::find($id);
-    $projects = $partner->projects;
-    return view('details_page')->with('projects', $projects);
-});
-
-
-
-
-
-
-
-Route::resource('product', ProductController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

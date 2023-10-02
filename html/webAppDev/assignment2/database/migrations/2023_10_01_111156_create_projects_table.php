@@ -16,7 +16,7 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->unsignedBigInteger('inp_id'); // use unsigned not id() because thats only for the Primary Key
+            $table->unsignedBigInteger('inp_id')->unique(); // use unsigned not id() because thats only for the Primary Key
             $table->string('email')->unique();
             $table->text('description');
             $table->integer('students_required');
