@@ -68,11 +68,8 @@ class PartnerController extends Controller
     public function show($id)
     {
         $partner = Partner::find($id);
-        $projects = $partner->projects;
-        return view('pages.details')->with([
-            'product' => $product,
-            'projects' => $projects
-        ]);
+        $projects = $partner->projects()->get();
+        return view('pages.details')->with('partner', $partner)->with('projects', $projects);
     }
 
     /**

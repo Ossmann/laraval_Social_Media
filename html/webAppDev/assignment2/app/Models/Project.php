@@ -11,7 +11,7 @@ class Project extends Model
 
     protected $fillable = [
         'title',
-        'inp_name',
+        'partner_id',
         'email',
         'description',
         'students_required',
@@ -20,4 +20,8 @@ class Project extends Model
         'image',
         // 'pdf',
     ];
+
+    function partner() {
+        return $this->belongsTo(Partner::class);
+        }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\ProjectController;
 use App\Models\User;
 use App\Models\Partner;
 use App\Models\Project;
@@ -21,6 +22,8 @@ use App\Models\Project;
 Route::get('/', [PartnerController::class, 'index']);
 
 Route::resource('partner', PartnerController::class);
+
+Route::resource('project', ProjectController::class);
 
 
 Route::get('/dashboard', function () {
