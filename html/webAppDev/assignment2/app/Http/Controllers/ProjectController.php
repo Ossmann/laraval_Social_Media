@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Partner;
 
 
 class ProjectController extends Controller
@@ -47,9 +48,9 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        $project = Project::find($id);
-        $partner = Project::find($id)->partner;
-        return view('pages.project')->with('partner', $partner)->with('project', $project);
+        $project = Project::with('partner')->find($id);
+
+        return view('pages.project')->with('project', $project);
     }
 
     /**
@@ -85,4 +86,5 @@ class ProjectController extends Controller
     {
         //
     }
+
 }

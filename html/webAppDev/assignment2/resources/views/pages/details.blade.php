@@ -7,7 +7,7 @@
 <h3>{{$partner->inp_name}} offers following projects:</h3>
 <ul>
     @foreach ($projects as $project)
-        <a href="project/{{$project->id}}"><li>{{$project->title}}</li></a>
+        <a href="projects/{{$project->id}}"><li>{{$project->title}}</li></a>
     @endforeach
 </ul>
 

@@ -18,12 +18,20 @@ use App\Models\Project;
 |
 */
 
-//Load HomePage and check Login via the PartnerController
+// //Load HomePage and check Login via the PartnerController
+// Route::get('/', [PartnerController::class, 'index']);
+
+// //Call the Partner controller to access the show() function there to list all projects of a partner
+// Route::resource('partner', PartnerController::class);
+
+
+// //Load HomePage and check Login via the PartnerController
 Route::get('/', [PartnerController::class, 'index']);
 
-Route::resource('partner', PartnerController::class);
 
-Route::resource('project', ProjectController::class);
+Route::get('partner/{id}', [PartnerController::class, 'show']);
+
+Route::get('partner/projects/{id}', [ProjectController::class, 'show']);
 
 
 Route::get('/dashboard', function () {
