@@ -14,11 +14,31 @@ class UsersTableSeeder extends Seeder
      */
     public function run() { 
         DB::table('users')->insert([
-        'name' => "Jakob",
-        'email' => 'Jakob@email.com', 'password' => bcrypt('123456'),
+            'name' => 'WestPac',
+            'gpa' => null,
+            'type' => 'partner',
+            'student_project_id' => null,
+            'email' => 'office@westpacnot.com',
+            'password' => bcrypt('123456'),
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
         DB::table('users')->insert([
-        'name' => "Fred",
-        'email' => 'Fred@gmail.com', 'password' => bcrypt('123456'),
-        ]); }
+            'name' => 'Atlassian',
+            'gpa' => null,
+            'type' => 'partner',
+            'student_project_id' => null,
+            'email' => 'not@atlassian.com',
+            'password' => bcrypt('123456'),
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Jakob Ossmann',
+            'gpa' => 7,
+            'type' => 'student',
+            'student_project_id' => null,
+            'email' => 'Jakob@email.com',
+            'password' => bcrypt('123456'),
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+    }
 }

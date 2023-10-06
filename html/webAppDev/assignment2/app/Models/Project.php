@@ -11,17 +11,34 @@ class Project extends Model
 
     protected $fillable = [
         'title',
-        'partner_id',
-        'email',
         'description',
         'students_required',
         'year',
         'trimester',
-        'image',
-        // 'pdf',
     ];
 
-    function partner() {
-        return $this->belongsTo(Partner::class);
+    public function application()
+        {
+            return $this->hasMany(Application::class);
+        }
+    
+        public function student_project_project()
+        {
+            return $this->hasMany(Student_Project::class);
+        }
+
+        public function image()
+        {
+            return $this->hasMany(Image::class);
+        }
+
+        public function pdf()
+        {
+            return $this->hasMany(Application::class);
+        }
+
+        public function admin_project_project()
+        {
+            return $this->hasOne(Admin_Project::class);
         }
 }

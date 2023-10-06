@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Partner;
+use App\Models\Project;
+use App\Models\User;
+use App\Models\Admin_Project;
 
 
-class PartnerController extends Controller
+class UserController extends Controller
 {
     //middleware function to check if 
     public function __construct() { 
@@ -20,7 +23,7 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        $partners = Partner::all();
+        $partners = User::where('type', 'partner')->get();
         return view('pages.index')->with('partners', $partners);
     }
 
@@ -67,8 +70,17 @@ class PartnerController extends Controller
      */
     public function show($id)
     {
-        $partner = Partner::find($id);
-        $projects = $partner->projects()->get();
+        $partner = User::find($id);
+        $admin_projects = Admin_Project::where('user_id', $partner->id)->get();
+
+        // // Initialize an empty array to store the projects
+        //  $projects = [];
+
+        // // Loop through each admin project to retrieve the associated project
+        // foreach ($admin_projects as $admin_project) {
+        //     $projects[] = $admin_project->project;
+        // }
+
         return view('pages.details')->with('partner', $partner)->with('projects', $projects);
     }
 

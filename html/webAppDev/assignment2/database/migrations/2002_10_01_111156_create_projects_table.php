@@ -16,17 +16,11 @@ class CreateProjectsTable extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->unsignedBigInteger('partner_id')->unique(); // use unsigned not id() because thats only for the Primary Key
-            $table->string('email')->unique();
             $table->text('description');
             $table->integer('students_required');
             $table->integer('year');
             $table->integer('trimester');
-            $table->string('image');
-            // $table->string('pdf');
             $table->timestamps();
-            $table->foreign('partner_id')->references('id')->on('partners'); // Enforces foreign key constraint
-
         });
     }
 

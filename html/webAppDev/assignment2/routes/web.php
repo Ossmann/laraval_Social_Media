@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
 use App\Models\User;
 use App\Models\Partner;
@@ -26,10 +26,10 @@ use App\Models\Project;
 
 
 // //Load HomePage and check Login via the PartnerController
-Route::get('/', [PartnerController::class, 'index']);
+Route::get('/', [UserController::class, 'index']);
 
 
-Route::get('partner/{id}', [PartnerController::class, 'show']);
+Route::get('partner/{id}', [UserController::class, 'show']);
 
 Route::get('partner/projects/{id}', [ProjectController::class, 'show']);
 

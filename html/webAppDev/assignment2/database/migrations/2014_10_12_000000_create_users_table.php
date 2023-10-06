@@ -16,11 +16,15 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->float('gpa')->nullable(); // Allow NULL values in project_id
+            $table->string('type');
+            $table->unsignedBigInteger('student_project_id')->nullable();;
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('student_project_id')->references('id')->on('student_projects'); // Enforces foreign key constraint
         });
     }
 
