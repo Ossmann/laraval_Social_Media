@@ -100,9 +100,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    // teacher approves a new industry partner
     public function edit($id)
     {
-       
+       $partner = User::find($id);
+       $partner->status = 'approved';
+       $partner->save();
+
+       return redirect(route('home'));
     }
 
     /**

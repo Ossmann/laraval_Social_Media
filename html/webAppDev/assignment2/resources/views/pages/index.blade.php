@@ -7,7 +7,9 @@
 <ul>
     @foreach ($partners as $partner)
         <a href="partner/{{$partner->id}}"><li>{{$partner->name}}</li></a>
-
+        @if($partner->status != 'approved' && auth()->user()->type == 'teacher')
+            <p><a href="approve/{{$partner->id}}">Approve Partner</a></p>
+        @endif
     @endforeach
 </ul>
 

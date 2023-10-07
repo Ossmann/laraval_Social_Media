@@ -52,6 +52,9 @@ Route::put('create_project_action', [ProjectController::class, 'store']);
 //Deleter project
 Route::get('partner/projects/delete_project/{id}', [ProjectController::class, 'destroy']);
 
+//Teacher approves a new Industry partner
+Route::get('approve/{id}', [UserController::class, 'edit']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
     //test

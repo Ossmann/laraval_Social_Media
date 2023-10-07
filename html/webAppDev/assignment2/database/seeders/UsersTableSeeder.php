@@ -12,16 +12,7 @@ class UsersTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run() { 
-        DB::table('users')->insert([
-            'name' => 'WestPac',
-            'gpa' => null,
-            'type' => 'partner',
-            'student_project_id' => null,
-            'email' => 'office@westpacnot.com',
-            'password' => bcrypt('123456'),
-            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
-        ]);
+    public function run() {
         DB::table('users')->insert([
             'name' => 'Atlassian',
             'gpa' => null,
@@ -29,6 +20,17 @@ class UsersTableSeeder extends Seeder
             'student_project_id' => null,
             'email' => 'not@atlassian.com',
             'password' => bcrypt('123456'),
+            'status' => null,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'WestPac',
+            'gpa' => null,
+            'type' => 'partner',
+            'student_project_id' => null,
+            'email' => 'office@westpacnot.com',
+            'password' => bcrypt('123456'),
+            'status' => 'approved',
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
         DB::table('users')->insert([
@@ -38,6 +40,17 @@ class UsersTableSeeder extends Seeder
             'student_project_id' => null,
             'email' => 'Jakob@email.com',
             'password' => bcrypt('123456'),
+            'status' => null,
+            'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'Gary',
+            'gpa' => null,
+            'type' => 'teacher',
+            'student_project_id' => null,
+            'email' => 'gary@email.com',
+            'password' => bcrypt('123456'),
+            'status' => null,
             'updated_at' => DB::raw('CURRENT_TIMESTAMP'),
         ]);
     }

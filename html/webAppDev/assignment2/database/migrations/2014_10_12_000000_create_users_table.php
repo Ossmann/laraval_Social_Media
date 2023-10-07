@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('status')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('student_project_id')->references('id')->on('student_projects'); // Enforces foreign key constraint

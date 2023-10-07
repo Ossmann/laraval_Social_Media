@@ -24,6 +24,7 @@ class User extends Authenticatable
         'student_project_id',
         'email',
         'password',
+        'status',
     ];
 
     /**
