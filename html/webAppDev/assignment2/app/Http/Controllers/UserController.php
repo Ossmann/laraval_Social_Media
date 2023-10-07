@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Partner;
 use App\Models\Project;
 use App\Models\User;
 use App\Models\Adminproject;
@@ -23,8 +22,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $partners = User::where('type', 'partner')->get();
+        // paginate to show only 5 partners on the homepage
+        $partners = User::where('type', 'partner')->paginate(5);
         return view('pages.index')->with('partners', $partners);
+    }
+
+    public function liststudents()
+    {
+        $students = User::where('type', 'student')->get();
+        return view('pages.studentlist')->with('students', $students);
     }
 
     /**
@@ -43,23 +49,11 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|max:255',
-            'price' => 'required|numeric|min:1',
-            //task2 custom error message
-            'price.required' => 'The price must be at least 1.',
-            'manufacturer' =>'exists:manufacturers,id'
-            
-            ]);
-        $product = new Product();
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->manufacturer_id = $request->manufacturer;
-        $product->save();
-        return redirect("product/$product->id");
-        
+        // $this->validate($request, [
+
     }
 
     /**
@@ -71,8 +65,7 @@ class UserController extends Controller
     public function show($id)
     {
         $partner = User::find($id);
-        $adminprojects = $partner->adminprojects()->get();
-
+        $adminprojects = $partner->adminprojects;
 
         // // Initialize an empty array to store the projects
          $projects = [];
@@ -85,6 +78,22 @@ class UserController extends Controller
         return view('pages.details')->with('partner', $partner)->with('projects', $projects);
     }
 
+    //retrieve data for the profile page of students
+    public function profile($id)
+    {
+        $student = User::find($id);
+
+        return view('pages.studentprofile')->with('student', $student);
+    }
+
+    //get the form to update a studentprofile with the data
+    public function updateprofile($id)
+    {
+        $student = User::find($id);
+
+        return view('pages.update_profile_form')->with('student', $student);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -93,8 +102,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::find($id);
-        return view('products.edit_form')->with('product', $product)->with('manufacturers', Manufacturer::all());
+       
     }
 
     /**
@@ -106,12 +114,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Product::find($id);
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->manufacturer_id = $request->manufacturer;
-        $product->save();
-        return view('products.show')->with('product', $product);
+        $student = User::find($id);
+        $student->name = $request->name;
+        $student->gpa = $request->gpa;
+        $student->email = $request->email;
+        // $student->roles = $request->roles;
+        $student->save();
+        return view('pages.studentprofile')->with('student', $student);
+
     }
 
     /**

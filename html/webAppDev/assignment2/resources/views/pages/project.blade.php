@@ -13,5 +13,6 @@
    <!-- insert images and pdfs -->
 </ul>
 
-<p><a href='{{url("project/create")}}'>Create Project</a></p>
+<p><a href="delete_project/{{$project->id}}">Delete Project</a></p>
+<p><a href="{{ route('home') }}">Back</a></p>
 @endsection

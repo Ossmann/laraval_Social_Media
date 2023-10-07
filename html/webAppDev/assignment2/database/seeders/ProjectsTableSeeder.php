@@ -16,7 +16,7 @@ class ProjectsTableSeeder extends Seeder
     {
         DB::table('projects')->insert([
             'title' => 'Banking Fraud Detection',
-            'description' => 'Developer an algorithm that detects banking fraud.',
+            'description' => 'Develope an algorithm that detects banking fraud.',
             'students_required' => '20',
             'year' => '2023',
             'trimester' => '3',

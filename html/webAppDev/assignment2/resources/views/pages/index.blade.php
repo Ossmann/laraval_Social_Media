@@ -11,5 +11,10 @@
     @endforeach
 </ul>
 
-<p><a href='{{url("/project_list")}}'>Projects List</a></p>
+<p><a href="projectslist">All Projects</a></p>
+<p><a href="studentlist">All Students</a></p>
+
+
+{{ $partners->links()}}
+
 @endsection

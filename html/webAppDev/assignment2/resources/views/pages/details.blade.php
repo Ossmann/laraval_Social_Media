@@ -11,5 +11,5 @@
     @endforeach
 </ul>
 
-<p><a href='{{url("project/create")}}'>Create Project</a></p>
+<p><a href="create_project/{{$partner->id}}">Create Project</a></p>
 @endsection

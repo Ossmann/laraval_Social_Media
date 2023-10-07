@@ -14,45 +14,46 @@
 
             <!-- Name -->
             <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                <label for="name">{{ __('Name') }}</label>
+                <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus />
             </div>
 
             <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            <div>
+                <label for="email">{{ __('Email') }}</label>
+                <input id="email" type="email" name="email" value="{{ old('email') }}" required />
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
+            <div>
+                <label for="password">{{ __('Password') }}</label>
+                <input id="password" type="password" name="password" required autocomplete="new-password" />
             </div>
 
             <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
+            <div>
+                <label for="password_confirmation">{{ __('Confirm Password') }}</label>
+                <input id="password_confirmation" type="password" name="password_confirmation" required />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+            <!-- Type -->
+            <div>
+                <label for="type">{{ __('Type') }}</label>
+                <select id="type" type="select" name="type" value="{{ old('type') }}">
+                    <option value="student">Student</option>
+                    <option value="partner">Industry Partner</option>
+                </select>
+            </div>
+
+
+            <div>
+                <a href="{{ route('login') }}" class="underline text-sm text-gray-600 hover:text-gray-900">
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ml-4">
+                <button type="submit" class="ml-4">
                     {{ __('Register') }}
-                </x-button>
+                </button>
             </div>
         </form>
     </x-auth-card>
