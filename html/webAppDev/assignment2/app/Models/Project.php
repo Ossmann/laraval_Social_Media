@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Adminproject;
 
 class Project extends Model
 {
@@ -34,11 +35,11 @@ class Project extends Model
 
         public function pdf()
         {
-            return $this->hasMany(Application::class);
+            return $this->hasMany(Pdf::class);
         }
 
-        public function admin_project_project()
+        public function adminproject()
         {
-            return $this->hasOne(Admin_Project::class);
+            return $this->hasOne(Adminproject::class);
         }
 }

@@ -3,12 +3,11 @@
     Project_Page
 @endsection
 @section('content')
-<p>{{$project->partner->inp_name}}</p>
-<p>{{$project->partner->email}}</p>
+<p>{{$partner->name}}</p>
+<p>{{$partner->email}}</p>
 
 <h1>Project: {{$project->title}}</h1>
 <ul>
-   <li>email: {{$project->email}}</li>
    <li>description: {{$project->description}}</li>
    <li>Required Nr. of students: {{$project->students_required}}</li>
    <!-- insert images and pdfs -->

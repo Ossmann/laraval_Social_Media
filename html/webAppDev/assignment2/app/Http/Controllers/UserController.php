@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Partner;
 use App\Models\Project;
 use App\Models\User;
-use App\Models\Admin_Project;
+use App\Models\Adminproject;
 
 
 class UserController extends Controller
@@ -71,15 +71,16 @@ class UserController extends Controller
     public function show($id)
     {
         $partner = User::find($id);
-        $admin_projects = Admin_Project::where('user_id', $partner->id)->get();
+        $adminprojects = $partner->adminprojects()->get();
+
 
         // // Initialize an empty array to store the projects
-        //  $projects = [];
+         $projects = [];
 
         // // Loop through each admin project to retrieve the associated project
-        // foreach ($admin_projects as $admin_project) {
-        //     $projects[] = $admin_project->project;
-        // }
+        foreach ($adminprojects as $adminproject) {
+            $projects[] = $adminproject->project;
+        }
 
         return view('pages.details')->with('partner', $partner)->with('projects', $projects);
     }

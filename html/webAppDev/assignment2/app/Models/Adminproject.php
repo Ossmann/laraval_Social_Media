@@ -4,8 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Project;
 
-class Admin_Project extends Model
+class Adminproject extends Model
 {
     use HasFactory;
 
@@ -14,11 +16,11 @@ class Admin_Project extends Model
         'user_id',
     ];
 
-    function project_application() {
+    function project() {
         return $this->belongsTo(Project::class);
         }
     
-        public function user_admin()
+        public function user()
         {
             return $this->belongsTo(User::class);
         }

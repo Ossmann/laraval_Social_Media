@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-use App\Models\Admin_Project;
+use App\Models\Adminproject;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -45,8 +45,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function admin_projects() {
-        return $this->hasMany(Admin_Project::class);
+    public function adminprojects() {
+        return $this->hasMany(Adminproject::class);
         }
 
     public function role()

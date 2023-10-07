@@ -13,7 +13,7 @@ class CreateAdminProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('admin_projects', function (Blueprint $table) {
+        Schema::create('adminprojects', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('project_id');
             $table->unsignedBigInteger('user_id');
