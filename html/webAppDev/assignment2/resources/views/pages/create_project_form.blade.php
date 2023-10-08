@@ -6,7 +6,7 @@
 
 <h1>Create a Project</h1>
 
-<form method="POST" action=" {{url("create_project_action")}}">
+<form method="POST" action=" {{url("create_project_action")}}" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -38,6 +38,13 @@
                 <label for="trimester">Trimester:</label>
                 <input type="text" name="trimester" id="trimester">
             </li>
+            <li>
+            <label for="images">Images:</label>
+            <input type="file" name="images[]" id="images" multiple accept="image/*">
+        </li>
+        <li>
+            <label for="pdfs">PDFs:</label>
+            <input type="file" name="pdfs[]" id="pdfs" multiple accept=".pdf">
         </ul>
 
     <button type="submit">Create</button>

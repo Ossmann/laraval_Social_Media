@@ -15,7 +15,7 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('file_name');
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('project_id');
             $table->timestamps();
             $table->foreign('project_id')->references('id')->on('projects'); // Enforces foreign key constraint

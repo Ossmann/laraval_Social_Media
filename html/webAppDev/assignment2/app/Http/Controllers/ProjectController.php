@@ -5,11 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\User;
+use App\Models\Image;
+use App\Models\Pdf;
 use App\Models\Adminproject;
 
 
 class ProjectController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -66,6 +69,30 @@ class ProjectController extends Controller
         $project->year = $request->year;
         $project->trimester = $request->trimester;
         $project->save();
+
+            // Create the Images if they exist in the request
+            if (request()->hasFile('images')) {
+                $images = request()->file('images');
+                foreach ($images as $imageFile) {
+                    $image = new Image();
+                    $image_store = $imageFile->store('projects_images', 'public');
+                    $image->image = $image_store;
+                    $image->project_id = $project->id;
+                    $image->save();
+                }
+            }
+
+            // Create the PDFs if they exist in the request
+            if (request()->hasFile('pdfs')) {
+                $pdfFiles = request()->file('pdfs');
+                foreach ($pdfFiles as $pdfFile) {
+                    $pdf = new Pdf();
+                    $pdf_store = $pdfFile->store('projects_pdfs', 'public');
+                    $pdf->file_name = $pdf_store;
+                    $pdf->project_id = $project->id;
+                    $pdf->save();
+                }
+            }
 
         //Create the AdminProject aswell which bridges User and Project for Partner Users
         $adminproject = new Adminproject();

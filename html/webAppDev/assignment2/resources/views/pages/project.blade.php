@@ -13,6 +13,19 @@
    <!-- insert images and pdfs -->
 </ul>
 
+    @foreach ($project->images as $image)
+            <img src="{{ asset('storage/' . $image->image) }}" alt="image" style="width:300px;height:300px;">
+    @endforeach
+
+    @foreach ($project->pdfs as $pdf)
+            <a href="{{ asset('storage/' . $pdf->file_name) }}" target="_blank">View PDF</a>
+    @endforeach
+
+
+
 <p><a href="delete_project/{{$project->id}}">Delete Project</a></p>
+
+<p><a href="apply/{{$project->id}}">Apply</a></p>
+
 <p><a href="{{ route('home') }}">Back</a></p>
 @endsection

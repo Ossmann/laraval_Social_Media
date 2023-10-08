@@ -12,4 +12,6 @@
 </ul>
 
 <p><a href="create_project/{{$partner->id}}">Create Project</a></p>
+
+<p><a href="{{ route('home') }}">Back</a></p>
 @endsection
