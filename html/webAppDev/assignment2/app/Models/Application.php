@@ -15,11 +15,11 @@ class Application extends Model
         'user_id',
     ];
 
-    function application_project() {
+    function project() {
         return $this->belongsTo(Project::class);
         }
     
-    function application_user() {
+    function user() {
             return $this->belongsTo(User::class);
             }
 }

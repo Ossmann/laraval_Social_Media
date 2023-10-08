@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ApplicationController;
+
 use App\Models\User;
 use App\Models\Partner;
 use App\Models\Project;
@@ -35,7 +37,7 @@ Route::get('projectslist', [ProjectController::class, 'index']);
 Route::get('studentlist', [UserController::class, 'liststudents']);
 
 //Profile Page of Student
-Route::get('profile/{id}', [UserController::class, 'profile']);
+Route::get('profile/{id}', [UserController::class, 'profile'])->name('profile');
 
 //Get the form to Update Student Profile
 Route::get('profile/update/{id}', [UserController::class, 'updateprofile']);
@@ -43,6 +45,7 @@ Route::get('profile/update/{id}', [UserController::class, 'updateprofile']);
 //Add the update of the student profile to the DB
 Route::put('update_profile_action/{id}', [UserController::class, 'update']);
 
+//CREATE PROJECT
 //Get the form to Create a new project
 Route::get('partner/create_project/{id}', [ProjectController::class, 'create']);
 
@@ -52,8 +55,12 @@ Route::put('create_project_action', [ProjectController::class, 'store']);
 //Deleter project
 Route::get('partner/projects/delete_project/{id}', [ProjectController::class, 'destroy']);
 
+//APPLICATION TO PROJECT
 //Student gets the form to apply to a project
-Route::get('partner/projects/apply/{id}', [ProjectController::class, 'apply']);
+Route::get('partner/projects/apply/{project_id}/{user_id}', [ProjectController::class, 'apply']);
+
+//Add application to DB
+Route::post('application_action/{id}', [ApplicationController::class, 'store']);
 
 //Teacher approves a new Industry partner
 Route::get('approve/{id}', [UserController::class, 'edit']);

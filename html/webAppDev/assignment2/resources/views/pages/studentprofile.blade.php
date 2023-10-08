@@ -8,7 +8,9 @@
 <h3>{{$student->name}}</h3>
 <ul>
    <li>GPA: {{$student->gpa}}</li>
-   <!-- <li>Roles: {{$student->gpa}}</li> -->
+   @foreach ($student->roles as $role)
+    <li>Roles: {{$role->role}}</li>
+   @endforeach
 </ul>
 
 <p><a href="update/{{$student->id}}">Update Profile</a></p>

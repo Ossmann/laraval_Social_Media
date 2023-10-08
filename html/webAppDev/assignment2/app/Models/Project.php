@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Adminproject;
+use App\Models\Application;
 use App\Models\Image;
 use App\Models\Pdf;
 
@@ -20,7 +21,7 @@ class Project extends Model
         'trimester',
     ];
 
-    public function application()
+    public function applications()
         {
             return $this->hasMany(Application::class);
         }

@@ -8,10 +8,28 @@ use App\Models\User;
 use App\Models\Image;
 use App\Models\Pdf;
 use App\Models\Adminproject;
+use App\Models\Studentproject;
+use App\Models\Application;
 
 
 class ProjectController extends Controller
 {
+    //get the form to apply for a project as student
+    public function apply($project_id, $user_id)
+    {
+        $project = Project::find($project_id);
+        $student = User::find($user_id);
+        $application = new Application();
+        $application->project_id = $project->id;
+        $application->user_id = $student->id;
+        $application->save();
+
+        // dd($application->id);
+
+        return view('pages.application_form')->with('application', $application);
+
+    }
+  
     
     /**
      * Display a listing of the resource.
@@ -116,7 +134,6 @@ class ProjectController extends Controller
     {
         $project = Project::find($id);
         $partner = $project->adminproject->user;
-
 
         return view('pages.project')->with('project', $project)->with('partner', $partner);
     }

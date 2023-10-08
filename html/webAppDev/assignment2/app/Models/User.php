@@ -50,7 +50,7 @@ class User extends Authenticatable
         return $this->hasMany(Adminproject::class);
         }
 
-    public function role()
+    public function roles()
         {
             return $this->hasMany(Role::class);
         }
